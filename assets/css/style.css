@@ -18,6 +18,7 @@ html{
 
         border: 2px solid #0e5e86;
         border-radius: 10px;
+        background-color: aquamarine;
 
     }
 
@@ -265,11 +266,14 @@ html{
 
         border: 2px solid #eb8000;
         border-radius: 15px;
+        margin: 1rem 0;
         padding: 14px;
     }
     .conteiner-text{
         width: 85%;
     }
+
+
 
     .quest-header{
         display: flex;
@@ -335,6 +339,7 @@ html{
         font-size: 12px;
         color: white;
     }
+    
 
     .conteiner-button{
         display: flex;
@@ -352,6 +357,12 @@ html{
         border-radius: 10px;
         background-color: #0078f5;
      }
+
+    
+    .rarity-title span, .type-title span{ 
+        text-transform: lowercase;
+        text-transform: capitalize;
+    }
 
     .rarity-title{
         border-radius: 5px;

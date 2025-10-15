@@ -52,8 +52,43 @@
         form.reset();
         document.getElementById('modal-1').close();
 
+        criarMissao(novaMissao);
+
     
 }
+
+    function criarMissao(missaoData){
+
+        //  Encontrar a ID do TEMPLATE
+        const templateQuest = document.getElementById('template-quest');
+         console.log(' Template encontrado:', templateQuest);
+
+         //  pegar o conteudo do template
+        const templateContent = templateQuest.content;
+
+        //  criar uma nova missao(clonando o  template)
+        const novaMissaoElement = templateContent.cloneNode(true);
+
+        const tituloElement = novaMissaoElement.querySelector('.title-habit');
+        tituloElement.textContent = missaoData.titulo;
+
+        const descricaoElement = novaMissaoElement.querySelector('.description-quest')
+        descricaoElement.textContent = missaoData.descricao;
+
+        const tipoElement  = novaMissaoElement.querySelector('.type-title');
+        tipoElement.textContent = missaoData.tipo;
+
+
+        //  encontrar onde colocar a missao
+        const conteiner = document.querySelector('.current-quest')
+
+        //  vai add a quest ao conteiner
+        conteiner.appendChild(novaMissaoElement);
+
+        console.log('Template clonado e adicionado!');
+        
+        
+    }
 
 
 
