@@ -1,0 +1,535 @@
+html{
+    font-size: 65.5%; /*10px = 1 rem*/
+}
+
+@media (max-width: 768px) {
+
+    .menu{
+        display: flex;
+        position: fixed;
+        bottom: 0;
+
+        width: 100%;
+        max-width: 100%;
+        height: 10rem;
+        justify-content: space-between;
+        padding: 8px;
+        margin-bottom: 14px;
+
+        border: 2px solid #0e5e86;
+        border-radius: 10px;
+
+    }
+
+    .pag-icon, .button-icon{
+
+    }
+    
+    .pag-icon{
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .button-icon{
+        width: 6rem;
+        height: 6rem;
+    }
+
+
+/*=====================================
+        SEÇÃO DO PERFIL
+=======================================*/
+    
+    
+    /*=================
+          PROFILE 
+    ===================*/
+    
+    .profile{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem 0;
+    }
+    .conteiner-profile{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    .circle {
+        width: 6.4rem;
+        height: 6.4rem;
+
+        border: 2px solid #15839e;
+        border-radius: 50%;
+        background-color: #2b394f; /* ou a cor que quiser */
+
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        
+        background-image: url(/assets/imagens/crown.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 50%;
+    }
+    .number-circle{
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 50%;
+        background-color: #f09400;
+        border: 1px solid rgb(255, 255, 255);
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transform: translate(42px, 40px);
+
+    }
+    
+    
+    .classe-text, .title-text{
+        color: white;
+    }
+    .title-text{
+        font-size: 16px;
+    }
+    .classe-text{
+        font-size: 14px;
+    }
+
+    .mana{
+        display: flex;
+        width: auto;
+    }
+
+    .bar1,.bar2,.bar3,.bar4,.bar5{
+        border-radius: 15px;
+        height: 25px;
+        width: 5px;
+        background: linear-gradient(to bottom, #ed39a5 10%, #d946c5 50%, #b549fa 90%);
+
+        margin-right: 3px;
+    }
+    .bar5{
+        margin-right: 0;
+        opacity: 35%;
+    }
+
+    /*=================
+      FIM DO PROFILE 
+    ===================*/
+
+
+    /*=================
+      CONTEINER DO XP 
+    ===================*/
+
+    .conteiner-xp{
+
+        width: auto;
+        height: 115px;
+        border: 2px solid #0d3c54;
+        border-radius: 15px;
+
+        background-color: #17223a;
+
+        padding: 1.6rem;
+    }
+
+    .xp-text{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+    
+    .xp-text p{
+        font-size: 14px;
+        color: #53eafd;
+    }
+
+    .number-xp{
+        font-size: 12px;
+        color: #90a1b9;
+    }
+
+    .bar-xp{
+        width: 100%;
+        height: 2rem;
+
+        border: 1px solid #16415b;
+        border-radius: 20px;
+    }
+
+
+    .lvl{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+    }
+
+    .lvl span{
+        font-size: 12px;
+    }
+
+    .current-lvl{
+        color: #90a1b9;
+    }
+    .next-lvl{
+        color: #ffb900;
+    }
+
+    /*=================
+      FIM DO CONTEINER DO XP 
+    ===================*/
+
+    /*======================
+      SEQUENCIA DE MISSOES 
+    ========================*/
+    .sequence-quest{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+
+        gap: 1rem;
+        width: 100%;
+        margin: 2.4rem 0;
+    }
+    
+    .active-quest p, .quest-completed p, .sequence p{
+        font-size: 12px;
+    }
+    
+    .active-quest span, .quest-completed span, .sequence span{
+        font-size: 16px;
+        
+    }
+    
+
+
+    .active-quest{
+        height: 6rem;
+        width: 9.8rem;
+        border:  2px solid #0c3951;
+        border-radius: 10px;
+        color: #00d3f3;
+        padding: 12px;
+        background: #162136;
+        background: linear-gradient(90deg, rgba(22, 33, 54, 1) 10%,rgba(17, 26, 46, 1) 50%,rgba(14, 24, 44, 1) 90%)
+    }
+    .quest-completed{
+        height: 6rem;
+        width: 9.8rem;
+        border:  2px solid #31235a;
+        border-radius: 10px;
+        color: #c27aff;
+        padding: 12px;
+        background: #162136;
+        background: linear-gradient(90deg, rgba(22, 33, 54, 1) 10%,rgba(17, 26, 46, 1) 50%,rgba(14, 24, 44, 1) 90%)
+
+    }
+    .sequence{
+        height: 6rem;
+        width: 9.8rem;
+        border:  2px solid #ad8411;
+        border-radius: 10px;
+        color: #ad8411;
+        padding: 12px;
+        background: #162136;
+        background: linear-gradient(90deg, rgba(22, 33, 54, 1) 10%,rgba(17, 26, 46, 1) 50%,rgba(14, 24, 44, 1) 90%)
+    }
+
+/*=====================================
+    FIM DA SEÇÃO DO PERFIL
+=======================================*/
+
+
+/*=====================================
+              SEÇÃO DAS MISSOES
+=======================================*/
+
+    .title-section{
+        display: flex;
+        color: #53eafd;
+        gap: 1rem;
+        align-items: center;
+    }
+    .title-section h1{
+        font-size: 16px;
+    }
+
+    .conteiner-quest{
+        width: 100%;
+        height: 115px;
+
+        border: 2px solid #eb8000;
+        border-radius: 15px;
+        padding: 14px;
+    }
+    .conteiner-text{
+        width: 85%;
+    }
+
+    .quest-header{
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+        align-items: center;
+
+        margin-bottom: 14px;
+    }
+
+    .conteiner-icon{
+        width: 4rem;
+        height: 4rem;
+
+        /* SEM FLEXIBILIDADE  */
+        flex-shrink: 0;
+        flex-grow: 0;
+    
+
+        border-radius: 15px;
+        background-color: #ffb900;
+        background-image: url(/assets/imagens/crown.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 20px 20px;
+
+    }
+
+    .title-quest{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+    .title-habit{
+        font-size: 16px;
+        color: white;
+    }
+    .description-quest{
+        font-size: 14px;
+        color: #90a1b9;
+        margin-top: 4px;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; /* ... no final */
+    }
+
+    .quest-footer{
+        display: flex;
+    }
+
+    .quest-footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .conteiner-type{
+        display: flex; 
+        align-items: center;    
+        gap: 5px;
+
+        font-size: 12px;
+        color: white;
+    }
+
+    .conteiner-button{
+        display: flex;
+        align-items: center;    
+        gap: 5px;
+
+        font-size: 14px;
+        color: #fe9a00;
+    }
+    .conteiner-button button{
+        width: 3rem;
+        height: 3rem;
+
+        border: none;
+        border-radius: 10px;
+        background-color: #0078f5;
+     }
+
+    .rarity-title{
+        border-radius: 5px;
+        background-color: #fe9a00;
+        padding: 5px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .modal {
+    width: 90%;
+    max-width: 500px;
+    max-height: 100vh;
+    border: 2px solid #53eafd;
+    border-radius: 15px;
+    padding: 20px;
+    background: #1B283B;
+    background: linear-gradient(180deg,rgba(27, 40, 59, 1) 10%, rgba(26, 37, 57, 1) 50%, rgba(21, 32, 52, 1) 90%);
+
+    /* Centraliza */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /*  ORGANIZA UM ACIMA DO OUTRO */
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem; /* Espaço entre os elementos */
+    }
+
+    .modal[open] {
+    display: flex; /*  Só mostra quando tem atributo open */
+    }
+
+    .new-quest {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .new-quest h1{
+        font-size: 16px;
+        color: #53eafd;
+    }
+
+    .new-quest button {
+    width: 2.8rem;
+    height: 2.8rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #90a1b9
+;
+    }
+
+    /*  FORMULÁRIO ORGANIZADO */
+    .modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Espaço entre os campos */
+    }
+
+    /*  CADA LABEL COM SEU CAMPO */
+    .modal label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Espaço entre label e input */
+    color: white;
+    }
+
+    .modal label p{
+        font-size: 14px;
+        color: #90a1b9;
+    }
+    .categoria-group p{
+        font-size: 14px;
+        color: #90a1b9;
+        padding: 5px 0;
+    }
+
+    .modal input, .modal textarea {
+    padding: 12px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: #0b1226;
+    color: white;
+    }
+
+    .modal textarea {
+    min-height: 80px;
+    resize: vertical;
+    }
+
+    .tipo-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    }
+
+    .tipo-card {
+    flex: 1;
+    }
+
+    .card-content {
+    display: block;
+    font-size: 14px;
+    padding: 15px;
+    border: 2px solid #334155;
+    border-radius: 10px;
+    text-align: center;
+    background: #1e293b;
+    color: #90a1b9;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    }
+
+    .tipo-card input:checked + .card-content {
+    border-color: #3b82f6;
+    background: #1e40af;
+    color: white;
+    }
+
+    /*  BOTÃO DE CRIAR MISSÃO */
+    .modal button[type="submit"] {
+    padding: 15px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 1rem;
+    }
+
+    .modal::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    }
+
+    /* REMOVA todo o CSS anterior dos radio buttons */
+
+    .tipo-options {
+    display: flex;
+    gap: 10px;
+    }
+
+    .tipo-card {
+    flex: 1;
+    }
+
+    /* ESTILO BÁSICO DOS CARDS */
+    .card-content {
+    display: block;
+    padding: 15px;
+    border: 2px solid #334155;
+    border-radius: 10px;
+    text-align: center;
+    background: #1e293b;
+    color: #90a1b9;
+    cursor: pointer;
+    transition: all 0.3s;
+    }
+
+    /* ESTILO QUANDO SELECIONADO - MUITO IMPORTANTE */
+    input[type="radio"]:checked + .card-content {
+    border-color: #53eafd ;
+    background: #0e3b52 ;
+    color: white;
+    }
+}
