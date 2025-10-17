@@ -7,33 +7,37 @@ html{
     .menu{
         display: flex;
         position: fixed;
-        bottom: 0;
-
-        width: 100%;
-        max-width: 100%;
-        height: 10rem;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%); /* CENTRALIZA PERFEITAMENTE */
+        width: calc(100% - 28px); /*  100% - (14px esquerda + 14px direita) */
+        height: 70px;
         justify-content: space-between;
+        align-items: center;
         padding: 8px;
-        margin-bottom: 14px;
-
-        border: 2px solid #0e5e86;
+        border: 1px solid #115575;
         border-radius: 10px;
-        background-color: aquamarine;
+        background-color: #131d32;
+        box-sizing: border-box;
 
     }
 
-    .pag-icon, .button-icon{
+    .menu button{
+        border: none;
+        background: none;
 
+        padding: 16px;
     }
+
     
     .pag-icon{
-        width: 4rem;
+        display: inline;
+        width: 8rem;
         height: 4rem;
-    }
 
-    .button-icon{
-        width: 6rem;
-        height: 6rem;
+        text-align: center;
+
+        color: white;
     }
 
 
@@ -259,16 +263,40 @@ html{
     .title-section h1{
         font-size: 16px;
     }
+    .button-icon{
+        width: 3rem;
+        height: 3rem;
 
+        justify-content: center;
+        align-items: center;
+
+        border: none;
+        border-radius: 10px;
+        background: #00ACE1;
+        background: linear-gradient(120deg,rgba(0, 172, 225, 1) 0%, rgba(0, 107, 248, 1) 100%);
+        
+    }
+
+
+
+    /*=============================
+    Estilo do conteiner das missoes
+    ===============================*/
     .conteiner-quest{
         width: 100%;
         height: 115px;
 
-        border: 2px solid #eb8000;
+        background-color: #1B273B;
+        background: linear-gradient(180deg,rgba(27, 39, 59, 0.8) 10%, rgba(27, 39, 59, 0.5) 50%, rgba(27, 39, 59, 0.2) 90%);
+
+        border: 1px solid #eb8000;
+        border-bottom: 0;
         border-radius: 15px;
-        margin: 1rem 0;
+        box-shadow: 1px 10px 25px -1px rgba(235, 129, 0, 0.3), 1px 8px 10px -1px rgb(235 128 0 / 0.3);
+        margin: 20px 0;
         padding: 14px;
     }
+
     .conteiner-text{
         width: 85%;
     }
@@ -294,19 +322,22 @@ html{
     
 
         border-radius: 15px;
-        background-color: #ffb900;
-        background-image: url(/assets/imagens/crown.svg);
+        background: #FE9A00;
+        box-shadow: 0 8px 15px -3px rgb(255 185 0 / 0.3), 0 4px 6px -4px rgb(255 185 0 / 0.3);
+        background-image: url(/assets/imagens/icons-quests/crown.svg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: 20px 20px;
 
     }
 
-    .title-quest{
+    .title-quest, .quest-section{
         display: flex;
         justify-content: space-between;
         margin-bottom: 8px;
     }
+
+
     .title-habit{
         font-size: 16px;
         color: white;
@@ -356,7 +387,13 @@ html{
         border: none;
         border-radius: 10px;
         background-color: #0078f5;
+        box-shadow: 0 8px 15px -3px rgb(0 127 245 / 0.3), 0 4px 6px -4px rgb(0 127 245 / 0.3);
+        background-image: url(/assets/imagens/icons-quests/check.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 20px;
      }
+
 
     
     .rarity-title span, .type-title span{ 
@@ -370,6 +407,18 @@ html{
         padding: 5px;
     }
 
+    .section-missao-ativa{
+        margin-bottom: 2rem;
+        min-height: 300px;
+    }
+
+
+    .section-missao-concluida{
+        margin-bottom: 2rem;
+    }
+    /*============================================
+     Fim do config Estilo do conteiner das missoes
+    ==============================================*/
 
 
 
@@ -380,7 +429,9 @@ html{
 
 
 
-
+    /*==========================
+        COMEÇO DO CSS DO MODAL
+    ==========================*/
 
     .modal {
     width: 90%;
@@ -513,8 +564,6 @@ html{
     background: rgba(0, 0, 0, 0.8);
     }
 
-    /* REMOVA todo o CSS anterior dos radio buttons */
-
     .tipo-options {
     display: flex;
     gap: 10px;
@@ -543,4 +592,268 @@ html{
     background: #0e3b52 ;
     color: white;
     }
+
+    /*  ESCONDER RADIO BUTTONS NATIVOS (sem bolinhas) */
+    .tipo-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+    
+    /*  CARDS DE DIFICULDADE MAIORES */
+    .tipo-card .card-content strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    }
+    
+    .tipo-card .card-content small {
+        font-size: 11px;
+        opacity: 0.8;
+        display: block;
+    }
+    
+    /*  DIAS DA SEMANA - LAYOUT EM GRID */
+    .dias-options {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr); /*  CORREÇÃO: 7 colunas */
+        gap: 6px; /*  Reduzi o gap para caber melhor */
+        margin-top: 10px;
+    }
+
+    .dia-checkbox {
+        text-align: center;
+    }
+
+        /*  ESCONDER CHECKBOX NATIVO DOS DIAS */
+    .dia-checkbox input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+     /*  ESTILO DOS LABELS DOS DIAS */
+    .dia-label {
+        display: block;
+        padding: 8px 4px;
+        font-size: 11px; /*  Fonte um pouco menor */
+        border: 2px solid #334155;
+        border-radius: 6px; 
+        background: #1e293b;
+        color: #90a1b9;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+    }
+    
+    /* DIA SELECIONADO */
+    .dia-checkbox input[type="checkbox"]:checked+.dia-label {
+        border-color: #53eafd;
+        background: #0e3b52;
+        color: white;
+    }
+
+    /* SUB-QUESTS - ESTILOS */
+    .subquests-list {
+       margin-bottom: 15px;
+    }
+
+    .subquest-item {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+        align-items: center;
+    }
+    
+    .subquest-item input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        background: #0b1226;
+        color: white;
+        font-size: 14px;
+    }
+    
+    /*  BOTÃO ADICIONAR SUB-QUEST */
+    .add-subquest {
+        width: 100%;
+        padding: 12px;
+        border: 2px dashed #334155;
+        border-radius: 8px;
+        background: transparent;
+        color: #90a1b9;
+        cursor: pointer;
+        margin-bottom: 15px;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+    
+    .add-subquest:hover {
+        border-color: #53eafd;
+         color: #53eafd;
+    }
+    
+    /*  OPÇÕES DE ORDEM DAS SUB-QUESTS */
+    .ordem-subquests {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+    }
+    
+    .ordem-option {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        color: #90a1b9;
+    }
+    
+    .ordem-option input[type="radio"] {
+         margin: 0;
+    }
+
+        /* ======================================
+        ESTILOS PARA SUB-QUESTS NO MODAL
+        ====================================== */
+    
+        /* Container de cada sub-quest no modal */
+        .subquest-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    
+        /* Input das sub-quests */
+        .subquest-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            background: #0b1226;
+            color: white;
+            font-size: 14px;
+        }
+    
+        /* Botão de remover sub-quest (×) */
+        .remover-subquest {
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .remover-subquest:hover {
+            background: #dc2626;
+        }
+    
+        /* ======================================
+         ESTILOS PARA DIAS DA SEMANA NAS MISSÕES
+        ====================================== */
+    
+        /* Container dos dias da semana */
+        .dias-semana-display {
+            margin-top: 10px;
+        }
+    
+        /* Texto "Progresso Semanal" */
+        .progresso-semanal {
+            font-size: 12px;
+            color: #90a1b9;
+            margin-bottom: 8px;
+        }
+    
+        /* Container dos dias marcados */
+        .dias-marcados {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+    
+        /* Cada dia individual */
+        .dia-marcado {
+            padding: 4px 8px;
+            background: #0e3b52;
+            border: 1px solid #53eafd;
+            border-radius: 12px;
+            font-size: 10px;
+            color: #53eafd;
+            font-weight: 500;
+        }
+    
+        /* ======================================
+            ESTILOS PARA SUB-QUESTS NAS MISSÕES
+        ====================================== */
+    
+        /* Container das sub-quests na missão */
+        .subquests-display {
+            margin-top: 10px;
+        }
+    
+        /* Texto "Sub-Missões (0/4)" */
+        .progresso-subquests {
+            font-size: 12px;
+            color: #90a1b9;
+            margin-bottom: 8px;
+        }
+    
+        /* Número (0/4) */
+        .contador-subquests {
+            color: #53eafd;
+            font-weight: 500;
+        }
+    
+        /* Lista de sub-quests */
+        .lista-subquests {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+    
+        /* Cada sub-quest individual */
+        .subquest-item-display {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            border-radius: 6px;
+            background: rgba(14, 59, 82, 0.3);
+            border: 1px solid rgba(83, 234, 253, 0.2);
+        }
+    
+        /* Número (1., 2., etc) */
+        .numero-subquest {
+            font-size: 10px;
+            color: #90a1b9;
+            font-weight: 500;
+            min-width: 16px;
+        }
+    
+        /* Texto da sub-quest */
+        .texto-subquest {
+            font-size: 11px;
+            color: white;
+            flex: 1;
+        }
+    
+        /* Status ( ou ) */
+        .status-subquest {
+            font-size: 10px;
+        }
+    
+        /* Quando a sub-quest está concluída */
+        .subquest-item-display.concluida .texto-subquest {
+            text-decoration: line-through;
+            opacity: 0.6;
+            color: #90a1b9;
+        }
 }

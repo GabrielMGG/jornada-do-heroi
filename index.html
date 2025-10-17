@@ -12,7 +12,9 @@
 <body>
     <div class="container-mobile">
 
-        <!-- Seçao do perfil-->
+        <!--================
+            Seçao do perfil
+        =================-->
         <section id="profile-head">
             <div class="profile">
                 <div class="conteiner-profile">
@@ -61,13 +63,24 @@
             </div>
         </section>
 
-        <section>
+        <!--=========================
+            Seção da Missoes ativas
+        ==========================-->
+        <section id="section-missao-ativa" class="section-missao-ativa">
             <div class="current-quest">
-                <div class="title-section">
-                    <img src="assets/imagens/swords.svg" alt=""> 
-                    <h1> Missões Disponíveis</h1>
+                <div class="quest-section">
+                    <div class="title-section">
+                        <img src="assets/imagens/swords.svg" alt="">
+                        <h1> Missões Disponíveis</h1>
+                    </div>
+                    <div>
+                     <button id="form-modal" class="open-modal button-icon" data-modal="modal-1"> <img src="assets/imagens/plus.svg" width="20" height="20" class="img-position"> </button>
+                    </div>
                 </div>
                 
+                <!--==============================
+                    Config do Template das missoes
+                ===============================-->
                 <template id="template-quest">
                     <div class="conteiner-quest">
                         <div class="quest-header">
@@ -75,9 +88,25 @@
                             <div class="conteiner-text">
                                 <div class="title-quest">
                                     <span class="title-habit">Conquistar a Academia Arcana</span>
-                                    <span><img src="assets/imagens/ellipsis-vertical.svg" width="16" height="16"></span>
+                                    <span><img src="assets/imagens/icons-quests/ellipsis-vertical.svg" width="16" height="16"></span>
                                 </div>
                                 <div class="description-quest">Complete o projeto de desenvolvimento do cliente</div>
+                
+                                <!-- DIAS DA SEMANA (aparece só para missões semanais) -->
+                                <div class="dias-semana-display" style="display: none;">
+                                    <p class="progresso-semanal">Progresso Semanal</p>
+                                    <div class="dias-marcados">
+                                        <!-- O JavaScript vai preencher aqui -->
+                                    </div>
+                                </div>
+                
+                                <!-- SUB-QUESTS (aparece só para principais) -->
+                                <div class="subquests-display" style="display: none;">
+                                    <p class="progresso-subquests">Sub-Missões <span class="contador-subquests">(0/4)</span></p>
+                                    <div class="lista-subquests">
+                                        <!-- O JavaScript vai preencher aqui -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="quest-footer">
@@ -86,13 +115,16 @@
                                 <div class="type-title"><span>Principal</span></div>
                             </div>
                             <div class="conteiner-button">
-                                <div class="xp-gain"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffd230" class="bi bi-stars" viewBox="0 0 16 16">
-                                <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
-                                </svg>
-                                <span class="xp-number">+ 500</span></div>
-                                <button><img src="assets/imagens/check-check.svg" width="20" height="20"></button>
+                                <div class="xp-gain">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffd230" class="bi bi-stars"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z" />
+                                    </svg>
+                                    <span class="xp-number">+ 500</span>
+                                </div>
+                                <button class="quest-concluida"></button>
                             </div>
-                    
                         </div>
                     </div>
                 </template>
@@ -101,69 +133,162 @@
 
         </section>
 
+        <!--=========================
+            Seção da Missoes concluidas
+        ==========================-->
+         <section id="section-missao-concluida" class="section-missao-concluida">
+             <div class="current-quest">
+                <div class="quest-section">
+                    <div class="title-section">
+                        <img src="assets/imagens/swords.svg" alt="">
+                        <h1> Missões Concluídas</h1>
+                    </div>
+                </div>
+                     </div>
+         </section>
 
+         
+        <!--=============
+                MENU
+        ==============-->
         <nav class="menu">
             <div>
-                <button id="pag-quest" class=" pag-icon"><img src="assets/imagens/scroll-text.svg"></button>
+                <button id="pag-quest" class=" pag-icon"><img src="assets/imagens/icons-menu/scroll-text.svg" height="24" width="24">Missões</button>
             </div>
             <div >
-                <button id="pag-conquistas" class=" pag-icon"><img src="assets/imagens/trophy.svg"></button>
+                <button id="pag-conquistas" class=" pag-icon"><img src="assets/imagens/icons-menu/trophy.svg" height="24" width="24">Conquistas</button>
             </div>
             <div>
-                <button id="pag-modal" class="open-modal button-icon" data-modal="modal-1"> <img src="assets/imagens/square-plus.svg" alt=""> </button>
-            </div>
-            <div>
-                <button id="pag-personagem" class=" pag-icon"><img src="assets/imagens/user.svg"></button>
+                <button id="pag-personagem" class=" pag-icon"><img src="assets/imagens/icons-menu/user.svg" height="24" width="24">Personagem</button>
             </div>
             <div> 
-                <button id="pag-config" class=" pag-icon"><img src="assets/imagens/cog.svg" alt=""></button>
+                <button id="pag-config" class=" pag-icon"><img src="assets/imagens/icons-menu/cog.svg" height="24" width="24">Config</button>
             </div>
         </nav>
-
         
 
+        
+        <!--========================
+         Modal da criação de missoes
+        =========================-->
         <dialog id="modal-1" class="modal">
             <div class="new-quest">
-                <h1>Nova Missão</h1> 
+                <h1>Nova Missão</h1>
                 <button class="close-modal">x</button>
             </div>
-            <form method="post"  class="form">
-                <label >
+        
+            <form method="post" class="form">
+                <!-- TÍTULO E DESCRIÇÃO -->
+                <label>
                     <p>Título da Missão</p>
                     <input type="text" id="titulo" name="titulo" placeholder="Ex: Treinar na Academia" required>
                 </label>
+        
                 <label>
                     <p>Descrição</p>
-                    <textarea id="titulo" name="descricao"  placeholder="Detalhe sua Missão"></textarea>
+                    <textarea id="titulo" name="descricao" placeholder="Detalhe sua Missão"></textarea>
                 </label>
-
-               
+        
+                <!-- CATEGORIA -->
                 <div class="categoria-group">
                     <p>Categoria</p>
                     <div class="tipo-options">
-                    
                         <label class="tipo-card">
-                    
-                            <input type="radio" id="diaria" name="tipo" value="diaria" checked>
+                            <input type="radio" id="diaria" name="tipo" value="Diaria" checked>
                             <span class="card-content">Diária</span>
                         </label>
-                    
                         <label class="tipo-card">
-                            <input type="radio" id="semanal" name="tipo" value="semanal"  >
+                            <input type="radio" id="semanal" name="tipo" value="Semanal">
                             <span class="card-content">Semanal</span>
                         </label>
-                    
                         <label class="tipo-card">
-                            <input type="radio" id="principal" name="tipo" value="principal" >
+                            <input type="radio" id="principal" name="tipo" value="Principal">
                             <span class="card-content">Principal</span>
                         </label>
                     </div>
                 </div>
-                <button type="submit" name="criar-missao"> Criar Missão </button>
+        
+                <!-- SISTEMA DE DIFICULDADE (MANTENDO O MEU CSS (POR ENQUANTO)) -->
+                <div class="categoria-group dificuldade-group">
+                    <p>Nível de Desafio</p>
+                    <div class="tipo-options">
+        
+                        <label class="tipo-card">
+                            <input type="radio" name="dificuldade" value="novato" checked>
+                            <span class="card-content">
+                                <strong>🥷 Novato</strong>
+                                <small>Faltas: 2/semana</small>
+                            </span>
+                        </label>
+        
+                        <label class="tipo-card">
+                            <input type="radio" name="dificuldade" value="expert">
+                            <span class="card-content">
+                                <strong>🧙 Expert</strong>
+                                <small>Faltas: 1/semana</small>
+                            </span>
+                        </label>
+        
+                        <label class="tipo-card">
+                            <input type="radio" name="dificuldade" value="mestre">
+                            <span class="card-content">
+                                <strong>🐉 Mestre</strong>
+                                <small>Faltas: 0/semana</small>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+        
+                <!-- DIAS DA SEMANA (APARECE SÓ PARA SEMANAL) -->
+                <div class="categoria-group dias-semana-group" style="display: none;">
+                    <p>Dias da Semana</p>
+                    <div class="dias-options">
+                        <label class="dia-checkbox">
+                            <input type="checkbox" name="dias" value="seg">
+                            <span class="dia-label">Seg</span>
+                        </label>
+                        <label class="dia-checkbox">
+                            <input type="checkbox" name="dias" value="ter">
+                            <span class="dia-label">Ter</span>
+                        </label>
+                        <label class="dia-checkbox">
+                            <input type="checkbox" name="dias" value="qua">
+                            <span class="dia-label">Qua</span>
+                        </label>
+                        <label class="dia-checkbox">
+                            <input type="checkbox" name="dias" value="qui">
+                            <span class="dia-label">Qui</span>
+                        </label>
+                        <label class="dia-checkbox">
+                            <input type="checkbox" name="dias" value="sex">
+                            <span class="dia-label">Sex</span>
+                        </label>
+                        <label class="dia-checkbox">
+                            <input type="checkbox" name="dias" value="sab">
+                            <span class="dia-label">Sáb</span>
+                        </label>
+                        <label class="dia-checkbox">
+                            <input type="checkbox" name="dias" value="dom">
+                            <span class="dia-label">Dom</span>
+                        </label>
+                    </div>
+                </div>
+        
+                <!-- SUB-QUESTS (APARECE SÓ PARA PRINCIPAL) -->
+                <div class="categoria-group subquests-group" style="display: none;">
+                    <p>Sub-Missões</p>
+                    <div class="subquests-list">
+                        <!-- ÁREA DINÂMICA - JS VAI ADICIONAR AQUI -->
+                    </div>
+                    <button type="button" class="add-subquest">+ Adicionar Sub-Missão</button>
+                </div>
+        
+                <button type="submit" name="criar-missao">Criar Missão</button>
             </form>
-            
         </dialog>
-    </div>
+
+
+    </div><!-- Fim do conteiner Mobile-->
         
     <script src="assets/js/script.js"></script>
 </body>
