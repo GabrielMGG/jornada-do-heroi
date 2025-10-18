@@ -6,7 +6,6 @@
     <title>Cultivo do Heroi</title>
 
     <link rel="stylesheet" href="assets/css/base.css">
-
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -95,6 +94,10 @@
                                 <!-- DIAS DA SEMANA (aparece só para missões semanais) -->
                                 <div class="dias-semana-display" style="display: none;">
                                     <p class="progresso-semanal">Progresso Semanal</p>
+                                    <div class="barra-progresso-semanal">
+                                        <div class="progresso-dias" style="width: 33%"></div>
+                                    </div>
+                                    <div class="contador-dias">0/0 dias</div>
                                     <div class="dias-marcados">
                                         <!-- O JavaScript vai preencher aqui -->
                                     </div>
@@ -103,12 +106,19 @@
                                 <!-- SUB-QUESTS (aparece só para principais) -->
                                 <div class="subquests-display" style="display: none;">
                                     <p class="progresso-subquests">Sub-Missões <span class="contador-subquests">(0/4)</span></p>
+                                
+                                    <!-- BARRA DE PROGRESSO PARA PRINCIPAIS -->
+                                    <div class="barra-progresso-principal">
+                                        <div class="progresso-subquests-barra"></div>
+                                    </div>
+                                    <div class="contador-subquests-barra">0/4 concluídas</div>
+                                
                                     <div class="lista-subquests">
                                         <!-- O JavaScript vai preencher aqui -->
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> <!-- 🔴 CORREÇÃO: FECHAMENTO CORRETO DO conteiner-text -->
+                        </div> <!-- 🔴 CORREÇÃO: FECHAMENTO CORRETO DO quest-header -->
                         <div class="quest-footer">
                             <div class="conteiner-type">
                                 <div class="rarity-title"><span>Lendario</span></div>
@@ -277,6 +287,27 @@
                 <!-- SUB-QUESTS (APARECE SÓ PARA PRINCIPAL) -->
                 <div class="categoria-group subquests-group" style="display: none;">
                     <p>Sub-Missões</p>
+
+                     <!--MODO DE CONCLUSÃO -->
+                    <div class="modo-subquests-group">
+                        <p>Modo de Conclusão</p>
+                        <div class="modo-options">
+                            <label class="modo-option">
+                                <input type="radio" name="modoSubquests" value="livre" checked>
+                                <span class="modo-label">
+                                    <strong>Livre</strong>
+                                    <small>Concluir sub-missões em qualquer ordem</small>
+                                </span>
+                            </label>
+                            <label class="modo-option">
+                                <input type="radio" name="modoSubquests" value="sequencial">
+                                <span class="modo-label">
+                                    <strong>Sequencial</strong>
+                                    <small>Precisa concluir na ordem criada</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="subquests-list">
                         <!-- ÁREA DINÂMICA - JS VAI ADICIONAR AQUI -->
                     </div>

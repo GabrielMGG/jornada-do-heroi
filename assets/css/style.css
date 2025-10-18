@@ -25,7 +25,6 @@ html{
     .menu button{
         border: none;
         background: none;
-
         padding: 16px;
     }
 
@@ -34,9 +33,7 @@ html{
         display: inline;
         width: 8rem;
         height: 4rem;
-
         text-align: center;
-
         color: white;
     }
 
@@ -65,15 +62,12 @@ html{
     .circle {
         width: 6.4rem;
         height: 6.4rem;
-
         border: 2px solid #15839e;
         border-radius: 50%;
-        background-color: #2b394f; /* ou a cor que quiser */
-
+        background-color: #2b394f;
         position: relative;
         justify-content: center;
         align-items: center;
-        
         background-image: url(/assets/imagens/crown.png);
         background-repeat: no-repeat;
         background-position: center;
@@ -85,13 +79,10 @@ html{
         border-radius: 50%;
         background-color: #f09400;
         border: 1px solid rgb(255, 255, 255);
-        
         display: flex;
         justify-content: center;
         align-items: center;
-
         transform: translate(42px, 40px);
-
     }
     
     
@@ -115,7 +106,6 @@ html{
         height: 25px;
         width: 5px;
         background: linear-gradient(to bottom, #ed39a5 10%, #d946c5 50%, #b549fa 90%);
-
         margin-right: 3px;
     }
     .bar5{
@@ -133,14 +123,11 @@ html{
     ===================*/
 
     .conteiner-xp{
-
         width: auto;
         height: 115px;
         border: 2px solid #0d3c54;
         border-radius: 15px;
-
         background-color: #17223a;
-
         padding: 1.6rem;
     }
 
@@ -163,11 +150,9 @@ html{
     .bar-xp{
         width: 100%;
         height: 2rem;
-
         border: 1px solid #16415b;
         border-radius: 20px;
     }
-
 
     .lvl{
         display: flex;
@@ -196,7 +181,6 @@ html{
     .sequence-quest{
         display: grid;
         grid-template-columns: repeat(3, 1fr); 
-
         gap: 1rem;
         width: 100%;
         margin: 2.4rem 0;
@@ -208,11 +192,8 @@ html{
     
     .active-quest span, .quest-completed span, .sequence span{
         font-size: 16px;
-        
     }
     
-
-
     .active-quest{
         height: 6rem;
         width: 9.8rem;
@@ -232,7 +213,6 @@ html{
         padding: 12px;
         background: #162136;
         background: linear-gradient(90deg, rgba(22, 33, 54, 1) 10%,rgba(17, 26, 46, 1) 50%,rgba(14, 24, 44, 1) 90%)
-
     }
     .sequence{
         height: 6rem;
@@ -266,29 +246,23 @@ html{
     .button-icon{
         width: 3rem;
         height: 3rem;
-
         justify-content: center;
         align-items: center;
-
         border: none;
         border-radius: 10px;
         background: #00ACE1;
         background: linear-gradient(120deg,rgba(0, 172, 225, 1) 0%, rgba(0, 107, 248, 1) 100%);
-        
     }
-
-
 
     /*=============================
     Estilo do conteiner das missoes
     ===============================*/
     .conteiner-quest{
         width: 100%;
-        height: 115px;
-
+        min-height: 115px; /* 🔴 CORREÇÃO: mudei height para min-height */
+        height: auto; /* 🔴 CORREÇÃO: permite crescer */
         background-color: #1B273B;
         background: linear-gradient(180deg,rgba(27, 39, 59, 0.8) 10%, rgba(27, 39, 59, 0.5) 50%, rgba(27, 39, 59, 0.2) 90%);
-
         border: 1px solid #eb8000;
         border-bottom: 0;
         border-radius: 15px;
@@ -298,29 +272,22 @@ html{
     }
 
     .conteiner-text{
-        width: 85%;
+        width: 100%; /* 🔴 CORREÇÃO: mudei de 85% para 100% */
     }
-
-
 
     .quest-header{
         display: flex;
         width: 100%;
         gap: 1rem;
-        align-items: center;
-
+        align-items: flex-start; /* 🔴 CORREÇÃO: alinha no topo */
         margin-bottom: 14px;
     }
 
     .conteiner-icon{
         width: 4rem;
         height: 4rem;
-
-        /* SEM FLEXIBILIDADE  */
         flex-shrink: 0;
         flex-grow: 0;
-    
-
         border-radius: 15px;
         background: #FE9A00;
         box-shadow: 0 8px 15px -3px rgb(255 185 0 / 0.3), 0 4px 6px -4px rgb(255 185 0 / 0.3);
@@ -328,7 +295,6 @@ html{
         background-repeat: no-repeat;
         background-position: center;
         background-size: 20px 20px;
-
     }
 
     .title-quest, .quest-section{
@@ -337,23 +303,19 @@ html{
         margin-bottom: 8px;
     }
 
-
     .title-habit{
         font-size: 16px;
         color: white;
+        line-height: 1.3; /* 🔴 CORREÇÃO: melhor espaçamento */
     }
     .description-quest{
         font-size: 14px;
         color: #90a1b9;
         margin-top: 4px;
-
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; /* ... no final */
-    }
-
-    .quest-footer{
-        display: flex;
+        line-height: 1.4; /* 🔴 CORREÇÃO: melhor espaçamento */
+        /* 🔴 REMOVIDO: white-space: nowrap; - deixa o texto quebrar linha */
+        /* 🔴 REMOVIDO: overflow: hidden; - permite conteúdo expandir */
+        /* 🔴 REMOVIDO: text-overflow: ellipsis; - remove os ... */
     }
 
     .quest-footer{
@@ -366,24 +328,20 @@ html{
         display: flex; 
         align-items: center;    
         gap: 5px;
-
         font-size: 12px;
         color: white;
     }
     
-
     .conteiner-button{
         display: flex;
         align-items: center;    
         gap: 5px;
-
         font-size: 14px;
         color: #fe9a00;
     }
     .conteiner-button button{
         width: 3rem;
         height: 3rem;
-
         border: none;
         border-radius: 10px;
         background-color: #0078f5;
@@ -393,11 +351,8 @@ html{
         background-position: center;
         background-size: 20px;
      }
-
-
     
     .rarity-title span, .type-title span{ 
-        text-transform: lowercase;
         text-transform: capitalize;
     }
 
@@ -412,19 +367,231 @@ html{
         min-height: 300px;
     }
 
-
     .section-missao-concluida{
-        margin-bottom: 2rem;
+         margin-bottom: 2rem;
     }
-    /*============================================
-     Fim do config Estilo do conteiner das missoes
-    ==============================================*/
 
+    /* ======================================
+       ESTILOS PARA SUB-QUESTS E DIAS DA SEMANA
+       CORREÇÃO: MANTIDO APENAS UMA VERSÃO(PEDI IA PRA CONSERTAR UMA PARTE DA UMA OLHADA DEPOIS)
+    ======================================= */
+    
+    .subquests-display, .dias-semana-display {
+        margin-top: 12px;
+        padding: 10px;
+        background: rgba(14, 59, 82, 0.2);
+        border-radius: 8px;
+        border: 1px solid rgba(83, 234, 253, 0.1);
+    }
 
+    .progresso-subquests, .progresso-semanal {
+        font-size: 12px;
+        color: #90a1b9;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
 
+    .contador-subquests {
+        color: #53eafd;
+        font-weight: 600;
+    }
 
+    .lista-subquests {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
 
+    .subquest-item-display {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 6px;
+        background: rgba(14, 59, 82, 0.4);
+        border: 1px solid rgba(83, 234, 253, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
 
+    .subquest-item-display:hover {
+        background: rgba(14, 59, 82, 0.6);
+        border-color: rgba(83, 234, 253, 0.4);
+    }
+
+    .numero-subquest {
+        font-size: 10px;
+        color: #90a1b9;
+        font-weight: 500;
+        min-width: 16px;
+    }
+
+    .texto-subquest {
+        font-size: 12px;
+        color: white;
+        flex: 1;
+    }
+
+    .status-subquest {
+        font-size: 10px;
+    }
+
+    .subquest-item-display.concluida {
+        opacity: 0.7;
+        background: rgba(14, 59, 82, 0.2);
+    }
+
+    .subquest-item-display.concluida .texto-subquest {
+        text-decoration: line-through;
+        color: #90a1b9;
+    }
+
+    .dias-marcados {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .dia-marcado {
+        padding: 4px 8px;
+        background: #0e3b52;
+        border: 1px solid #53eafd;
+        border-radius: 5px;
+        font-size: 10px;
+        color: #53eafd;
+        font-weight: 500;
+    }
+
+    /* ======================================
+       ESTADOS VISUAIS DOS DIAS DA SEMANA
+    ======================================= */
+    .dia-ativo {
+        background: #0e3b52 !important;
+        border: 1px solid #53eafd !important;
+        color: #53eafd !important;
+        cursor: pointer;
+    }
+
+    .dia-inativo {
+        background: #1a2d3f !important;
+        border: 1px solid #334155 !important;
+        color: #64748b !important;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    .dia-concluido {
+        background: #065f46 !important;
+        border: 1px solid #10b981 !important;
+        color: #10b981 !important;
+        cursor: default;
+    }
+
+    /* Efeito hover apenas para dias ativos */
+    .dia-ativo:hover {
+        background: #0d4c6e !important;
+        border-color: #67e8f9 !important;
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+    }
+
+        /* ======================================
+       ESTILOS PARA MODO DE SUB-QUESTS
+    ======================================= */
+    .modo-subquests-group {
+        margin-bottom: 15px;
+        padding: 10px;
+        background: rgba(14, 59, 82, 0.2);
+        border-radius: 8px;
+        border: 1px solid rgba(83, 234, 253, 0.1);
+    }
+
+    .modo-options {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .modo-option {
+        display: flex;
+        align-items: center;
+    }
+
+    .modo-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .modo-label {
+        display: block;
+        padding: 12px;
+        border: 2px solid #334155;
+        border-radius: 8px;
+        background: #1e293b;
+        color: #90a1b9;
+        cursor: pointer;
+        transition: all 0.3s;
+        flex: 1;
+    }
+
+    .modo-option input[type="radio"]:checked + .modo-label {
+        border-color: #53eafd;
+        background: #0e3b52;
+        color: white;
+    }
+
+    .modo-label strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 14px;
+    }
+
+    .modo-label small {
+        font-size: 11px;
+        opacity: 0.8;
+        display: block;
+    }
+
+    /* Estilo para sub-quests bloqueadas */
+    .subquest-item-display.bloqueada {
+        opacity: 0.5;
+        background: rgba(14, 59, 82, 0.1);
+        border-color: rgba(83, 234, 253, 0.1);
+        cursor: not-allowed;
+    }
+
+    .subquest-item-display.bloqueada .texto-subquest {
+        color: #64748b;
+    }
+
+    /* ======================================
+       BARRAS DE PROGRESSO
+    ======================================= */
+    .barra-progresso-semanal, .barra-progresso-principal {
+        width: 100%;
+        height: 6px;
+        background: #0b1226;
+        border-radius: 10px;
+        margin: 8px 0;
+        overflow: hidden;
+    }
+
+    .progresso-dias, .progresso-subquests-barra {
+        height: 100%;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #00d3f3 0%, #0078f5 100%);
+        transition: width 0.3s ease;
+    }
+
+    .contador-dias, .contador-subquests-barra {
+        font-size: 10px;
+        color: #53eafd;
+        text-align: right;
+        margin-top: 4px;
+    }
 
 
 
@@ -442,21 +609,17 @@ html{
     padding: 20px;
     background: #1B283B;
     background: linear-gradient(180deg,rgba(27, 40, 59, 1) 10%, rgba(26, 37, 57, 1) 50%, rgba(21, 32, 52, 1) 90%);
-
-    /* Centraliza */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
-    /*  ORGANIZA UM ACIMA DO OUTRO */
     display: none;
     flex-direction: column;
-    gap: 1.5rem; /* Espaço entre os elementos */
+    gap: 1.5rem;
     }
 
     .modal[open] {
-    display: flex; /*  Só mostra quando tem atributo open */
+    display: flex;
     }
 
     .new-quest {
@@ -475,22 +638,19 @@ html{
     height: 2.8rem;
     border: none;
     border-radius: 10px;
-    background-color: #90a1b9
-;
+    background-color: #90a1b9;
     }
 
-    /*  FORMULÁRIO ORGANIZADO */
     .modal form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Espaço entre os campos */
+    gap: 1.5rem;
     }
 
-    /*  CADA LABEL COM SEU CAMPO */
     .modal label {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem; /* Espaço entre label e input */
+    gap: 0.5rem;
     color: white;
     }
 
@@ -519,8 +679,6 @@ html{
 
     .tipo-options {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
     }
 
@@ -528,52 +686,6 @@ html{
     flex: 1;
     }
 
-    .card-content {
-    display: block;
-    font-size: 14px;
-    padding: 15px;
-    border: 2px solid #334155;
-    border-radius: 10px;
-    text-align: center;
-    background: #1e293b;
-    color: #90a1b9;
-    cursor: pointer;
-    transition: all 0.3s;
-
-    }
-
-    .tipo-card input:checked + .card-content {
-    border-color: #3b82f6;
-    background: #1e40af;
-    color: white;
-    }
-
-    /*  BOTÃO DE CRIAR MISSÃO */
-    .modal button[type="submit"] {
-    padding: 15px;
-    background: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 1rem;
-    }
-
-    .modal::backdrop {
-    background: rgba(0, 0, 0, 0.8);
-    }
-
-    .tipo-options {
-    display: flex;
-    gap: 10px;
-    }
-
-    .tipo-card {
-    flex: 1;
-    }
-
-    /* ESTILO BÁSICO DOS CARDS */
     .card-content {
     display: block;
     padding: 15px;
@@ -586,14 +698,12 @@ html{
     transition: all 0.3s;
     }
 
-    /* ESTILO QUANDO SELECIONADO - MUITO IMPORTANTE */
     input[type="radio"]:checked + .card-content {
-    border-color: #53eafd ;
-    background: #0e3b52 ;
+    border-color: #53eafd;
+    background: #0e3b52;
     color: white;
     }
 
-    /*  ESCONDER RADIO BUTTONS NATIVOS (sem bolinhas) */
     .tipo-card input[type="radio"] {
     position: absolute;
     opacity: 0;
@@ -601,7 +711,6 @@ html{
     height: 0;
     }
     
-    /*  CARDS DE DIFICULDADE MAIORES */
     .tipo-card .card-content strong {
     display: block;
     margin-bottom: 4px;
@@ -614,11 +723,10 @@ html{
         display: block;
     }
     
-    /*  DIAS DA SEMANA - LAYOUT EM GRID */
     .dias-options {
         display: grid;
-        grid-template-columns: repeat(7, 1fr); /*  CORREÇÃO: 7 colunas */
-        gap: 6px; /*  Reduzi o gap para caber melhor */
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
         margin-top: 10px;
     }
 
@@ -626,20 +734,19 @@ html{
         text-align: center;
     }
 
-        /*  ESCONDER CHECKBOX NATIVO DOS DIAS */
     .dia-checkbox input[type="checkbox"] {
         position: absolute;
         opacity: 0;
         width: 0;
         height: 0;
     }
-     /*  ESTILO DOS LABELS DOS DIAS */
+    
     .dia-label {
         display: block;
         padding: 8px 4px;
-        font-size: 11px; /*  Fonte um pouco menor */
+        font-size: 11px;
         border: 2px solid #334155;
-        border-radius: 6px; 
+        border-radius: 6px;
         background: #1e293b;
         color: #90a1b9;
         cursor: pointer;
@@ -647,14 +754,12 @@ html{
         text-align: center;
     }
     
-    /* DIA SELECIONADO */
     .dia-checkbox input[type="checkbox"]:checked+.dia-label {
         border-color: #53eafd;
         background: #0e3b52;
         color: white;
     }
 
-    /* SUB-QUESTS - ESTILOS */
     .subquests-list {
        margin-bottom: 15px;
     }
@@ -666,7 +771,7 @@ html{
         align-items: center;
     }
     
-    .subquest-item input {
+    .subquest-input {
         flex: 1;
         padding: 10px;
         border: 1px solid #334155;
@@ -676,7 +781,6 @@ html{
         font-size: 14px;
     }
     
-    /*  BOTÃO ADICIONAR SUB-QUEST */
     .add-subquest {
         width: 100%;
         padding: 12px;
@@ -692,168 +796,39 @@ html{
     
     .add-subquest:hover {
         border-color: #53eafd;
-         color: #53eafd;
+        color: #53eafd;
     }
     
-    /*  OPÇÕES DE ORDEM DAS SUB-QUESTS */
-    .ordem-subquests {
+    .remover-subquest {
+        background: #ef4444;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        font-size: 14px;
         display: flex;
-        gap: 15px;
-        margin-top: 10px;
-    }
-    
-    .ordem-option {
-        display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 5px;
-        font-size: 12px;
-        color: #90a1b9;
     }
     
-    .ordem-option input[type="radio"] {
-         margin: 0;
+    .remover-subquest:hover {
+        background: #dc2626;
     }
 
-        /* ======================================
-        ESTILOS PARA SUB-QUESTS NO MODAL
-        ====================================== */
-    
-        /* Container de cada sub-quest no modal */
-        .subquest-item {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-    
-        /* Input das sub-quests */
-        .subquest-input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            background: #0b1226;
-            color: white;
-            font-size: 14px;
-        }
-    
-        /* Botão de remover sub-quest (×) */
-        .remover-subquest {
-            background: #ef4444;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            font-size: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    
-        .remover-subquest:hover {
-            background: #dc2626;
-        }
-    
-        /* ======================================
-         ESTILOS PARA DIAS DA SEMANA NAS MISSÕES
-        ====================================== */
-    
-        /* Container dos dias da semana */
-        .dias-semana-display {
-            margin-top: 10px;
-        }
-    
-        /* Texto "Progresso Semanal" */
-        .progresso-semanal {
-            font-size: 12px;
-            color: #90a1b9;
-            margin-bottom: 8px;
-        }
-    
-        /* Container dos dias marcados */
-        .dias-marcados {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-    
-        /* Cada dia individual */
-        .dia-marcado {
-            padding: 4px 8px;
-            background: #0e3b52;
-            border: 1px solid #53eafd;
-            border-radius: 12px;
-            font-size: 10px;
-            color: #53eafd;
-            font-weight: 500;
-        }
-    
-        /* ======================================
-            ESTILOS PARA SUB-QUESTS NAS MISSÕES
-        ====================================== */
-    
-        /* Container das sub-quests na missão */
-        .subquests-display {
-            margin-top: 10px;
-        }
-    
-        /* Texto "Sub-Missões (0/4)" */
-        .progresso-subquests {
-            font-size: 12px;
-            color: #90a1b9;
-            margin-bottom: 8px;
-        }
-    
-        /* Número (0/4) */
-        .contador-subquests {
-            color: #53eafd;
-            font-weight: 500;
-        }
-    
-        /* Lista de sub-quests */
-        .lista-subquests {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-    
-        /* Cada sub-quest individual */
-        .subquest-item-display {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 8px;
-            border-radius: 6px;
-            background: rgba(14, 59, 82, 0.3);
-            border: 1px solid rgba(83, 234, 253, 0.2);
-        }
-    
-        /* Número (1., 2., etc) */
-        .numero-subquest {
-            font-size: 10px;
-            color: #90a1b9;
-            font-weight: 500;
-            min-width: 16px;
-        }
-    
-        /* Texto da sub-quest */
-        .texto-subquest {
-            font-size: 11px;
-            color: white;
-            flex: 1;
-        }
-    
-        /* Status ( ou ) */
-        .status-subquest {
-            font-size: 10px;
-        }
-    
-        /* Quando a sub-quest está concluída */
-        .subquest-item-display.concluida .texto-subquest {
-            text-decoration: line-through;
-            opacity: 0.6;
-            color: #90a1b9;
-        }
+    .modal button[type="submit"] {
+    padding: 15px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 1rem;
+    }
+
+    .modal::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    }
 }

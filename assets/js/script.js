@@ -51,6 +51,19 @@ const SISTEMA_RARIDADE = {
     },
 };
 
+// 🔴 NOVA FUNÇÃO: PEGAR DIA DA SEMANA ATUAL
+function getDiaSemanaAtual() {
+    const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+    const hoje = new Date().getDay(); // 0 = domingo, 1 = segunda, etc.
+    return dias[hoje];
+}
+
+// 🔴 FUNÇÃO AUXILIAR: MAPA DE DIAS COMPLETO
+const diasMap = {
+    'seg': 'Seg', 'ter': 'Ter', 'qua': 'Qua', 
+    'qui': 'Qui', 'sex': 'Sex', 'sab': 'Sáb', 'dom': 'Dom'
+};
+
 function salvarMissao(){
     const form = document.querySelector('.form');
 
@@ -98,6 +111,13 @@ function salvarMissao(){
         diasSelecionados.push(checkbox.value);
     });
 
+    // 🔴 PEGAR MODO DE SUB-QUESTS (apenas para Principal)
+    let modoSubquests = 'livre';
+    const modoSelecionado = form.querySelector('input[name="modoSubquests"]:checked');
+    if (modoSelecionado) {
+        modoSubquests = modoSelecionado.value;
+    }
+
     const novaMissao = {
         id: Date.now(),
         titulo: titulo,
@@ -105,9 +125,10 @@ function salvarMissao(){
         tipo: tipo,
         raridade: 'comum',
         concluida: false,
-        // ADICIONAR SUB QUESTS E DIAS
         subQuests: subQuests,
-        diasSelecionados: diasSelecionados
+        diasSelecionados: diasSelecionados,
+        // 🔴 NOVO: Modo de conclusão das sub-quests
+        modoSubquests: tipo === 'Principal' ? modoSubquests : 'livre'
     };
 
     missoes.push(novaMissao);
@@ -146,47 +167,90 @@ function criarMissao(missaoData){
     const tipoElement  = novaMissaoElement.querySelector('.type-title span');
     tipoElement.textContent = missaoData.tipo;
 
-    // MOSTRAR DIAS DA SEMANA PARA MISSÕES SEMANAIS
+    // 🔴 ATUALIZADO: MOSTRAR DIAS DA SEMANA COM ESTADOS VISUAIS
     const diasDisplay = novaMissaoElement.querySelector('.dias-semana-display');
     if (missaoData.tipo === 'Semanal' && missaoData.diasSelecionados && missaoData.diasSelecionados.length > 0) {
         diasDisplay.style.display = 'block';
         
+        const barraProgresso = novaMissaoElement.querySelector('.progresso-dias');
+        const contadorDias = novaMissaoElement.querySelector('.contador-dias');
         const diasMarcados = novaMissaoElement.querySelector('.dias-marcados');
-        const diasMap = {
-            'seg': 'Seg', 'ter': 'Ter', 'qua': 'Qua', 
-            'qui': 'Qui', 'sex': 'Sex', 'sab': 'Sáb', 'dom': 'Dom'
-        };
         
+        const diaAtual = getDiaSemanaAtual();
+        
+        // 🔴 MOSTRAR DIAS COM ESTADOS VISUAIS
         missaoData.diasSelecionados.forEach(dia => {
             const diaElement = document.createElement('span');
             diaElement.className = 'dia-marcado';
             diaElement.textContent = diasMap[dia];
+            
+            // 🔴 VERIFICAR SE É O DIA ATUAL
+            if (dia === diaAtual) {
+                diaElement.classList.add('dia-ativo'); // DIA ATUAL - pode clicar
+            } else {
+                diaElement.classList.add('dia-inativo'); // OUTRO DIA - desabilitado
+            }
+            
             diasMarcados.appendChild(diaElement);
         });
+        
+        // INICIAR COM PROGRESSO 0
+        const diasConcluidos = 0;
+        const totalDias = missaoData.diasSelecionados.length;
+        const porcentagem = 0;
+        
+        barraProgresso.style.width = `${porcentagem}%`;
+        contadorDias.textContent = `${diasConcluidos}/${totalDias} dias`;
+        
+        // SALVAR INFORMAÇÕES DE PROGRESSO NA MISSAO
+        missaoData.progressoSemanal = {
+            diasConcluidos: diasConcluidos,
+            totalDias: totalDias,
+            diasConcluidosLista: []
+        };
     }
 
-    // MOSTRAR SUB QUESTS PARA MISSÕES PRINCIPAIS
+    // 🔴 ATUALIZADO: MOSTRAR SUB QUESTS PARA MISSÕES PRINCIPAIS
     const subquestsDisplay = novaMissaoElement.querySelector('.subquests-display');
     if (missaoData.tipo === 'Principal' && missaoData.subQuests && missaoData.subQuests.length > 0) {
         subquestsDisplay.style.display = 'block';
         
         const contadorSubquests = novaMissaoElement.querySelector('.contador-subquests');
+        const barraProgresso = novaMissaoElement.querySelector('.progresso-subquests-barra');
+        const contadorBarra = novaMissaoElement.querySelector('.contador-subquests-barra');
         const listaSubquests = novaMissaoElement.querySelector('.lista-subquests');
         
         const concluidas = missaoData.subQuests.filter(sq => sq.concluida).length;
         const total = missaoData.subQuests.length;
+        const porcentagem = total > 0 ? (concluidas / total) * 100 : 0;
         
+        // Contadores
         contadorSubquests.textContent = `(${concluidas}/${total})`;
+        contadorBarra.textContent = `${concluidas}/${total} concluídas`;
+        barraProgresso.style.width = `${porcentagem}%`;
         
         listaSubquests.innerHTML = '';
         missaoData.subQuests.forEach((subquest, index) => {
             const subquestElement = document.createElement('div');
-            subquestElement.className = `subquest-item-display ${subquest.concluida ? 'concluida' : ''}`;
+            
+            // 🔴 VERIFICAR SE ESTÁ BLOQUEADA (modo sequencial)
+            let bloqueada = false;
+            if (missaoData.modoSubquests === 'sequencial' && index > 0) {
+                // Verificar se a sub-quest anterior foi concluída
+                const anteriorConcluida = missaoData.subQuests[index - 1].concluida;
+                if (!anteriorConcluida) {
+                    bloqueada = true;
+                }
+            }
+            
+            subquestElement.className = `subquest-item-display ${subquest.concluida ? 'concluida' : ''} ${bloqueada ? 'bloqueada' : ''}`;
+            
             subquestElement.innerHTML = `
                 <span class="numero-subquest">${index + 1}.</span>
                 <span class="texto-subquest">${subquest.titulo}</span>
-                <span class="status-subquest">${subquest.concluida ? '✅' : '⏳'}</span>
+                <span class="status-subquest">${subquest.concluida ? '✅' : (bloqueada ? '🔒' : '⏳')}</span>
             `;
+            
             listaSubquests.appendChild(subquestElement);
         });
     }
@@ -242,23 +306,95 @@ document.addEventListener('click', function(event){
     }
 });
 
-// FUNÇÃO COMPLETAR MISSÃO
+// 🔴 ATUALIZADA: FUNÇÃO COMPLETAR MISSÃO COM SISTEMA VISUAL INTELIGENTE
 function completarMissao(idMissao){
-    // Encontrar a missão no array pelo ID
     const missao = missoes.find(m => m.id === idMissao);
-
-    // Encontra a origen e o destino das missoes quando esta ativa e concluida
-    const sectionMissaoOrigen = document.getElementById('section-missao-ativa');
-    const sectionMissaoMove = document.getElementById('section-missao-concluida');
-
+    
     if(missao){
-        // Marcar a missao como concluida 
+        // VERIFICAR SE É MISSÃO SEMANAL
+        if (missao.tipo === 'Semanal') {
+            const diaAtual = getDiaSemanaAtual();
+            
+            // Verificar se hoje é um dos dias selecionados
+            if (missao.diasSelecionados.includes(diaAtual)) {
+                
+                // Inicializar progresso se não existir
+                if (!missao.progressoSemanal) {
+                    missao.progressoSemanal = {
+                        diasConcluidos: 0,
+                        totalDias: missao.diasSelecionados.length,
+                        diasConcluidosLista: []
+                    };
+                }
+                
+                // Verificar se o dia já não foi concluído
+                if (!missao.progressoSemanal.diasConcluidosLista.includes(diaAtual)) {
+                    // AUMENTAR PROGRESSO
+                    missao.progressoSemanal.diasConcluidos++;
+                    missao.progressoSemanal.diasConcluidosLista.push(diaAtual);
+                    
+                    // Atualizar visualmente
+                    const missaoElement = document.querySelector(`[data-id="${idMissao}"]`);
+                    const barraProgresso = missaoElement.querySelector('.progresso-dias');
+                    const contadorDias = missaoElement.querySelector('.contador-dias');
+                    const diasMarcados = missaoElement.querySelectorAll('.dia-marcado');
+                    
+                    const porcentagem = (missao.progressoSemanal.diasConcluidos / missao.progressoSemanal.totalDias) * 100;
+                    
+                    barraProgresso.style.width = `${porcentagem}%`;
+                    contadorDias.textContent = `${missao.progressoSemanal.diasConcluidos}/${missao.progressoSemanal.totalDias} dias`;
+                    
+                    // 🔴 ATUALIZAR VISUAL DOS DIAS
+                    diasMarcados.forEach(diaElement => {
+                        const textoDia = diaElement.textContent;
+                        const diaAbreviado = Object.keys(diasMap).find(key => diasMap[key] === textoDia);
+                        
+                        if (missao.progressoSemanal.diasConcluidosLista.includes(diaAbreviado)) {
+                            // DIA JÁ CONCLUÍDO - verde
+                            diaElement.className = 'dia-marcado dia-concluido';
+                        } else if (diaAbreviado === diaAtual) {
+                            // DIA ATUAL E NÃO CONCLUÍDO - azul ativo
+                            diaElement.className = 'dia-marcado dia-ativo';
+                        } else {
+                            // OUTRO DIA - cinza desabilitado
+                            diaElement.className = 'dia-marcado dia-inativo';
+                        }
+                    });
+                    
+                    console.log(`✅ Progresso semanal atualizado: ${missao.progressoSemanal.diasConcluidos}/${missao.progressoSemanal.totalDias}`);
+                    
+                    // VERIFICAR SE COMPLETOU TODOS OS DIAS
+                    if (missao.progressoSemanal.diasConcluidos >= missao.progressoSemanal.totalDias) {
+                        // MISSÃO SEMANAL COMPLETA - mover para concluídas
+                        missao.concluida = true;
+                        missao.dataConclusao = new Date().toISOString();
+                        
+                        missaoElement.style.opacity = '0.4';
+                        missaoElement.querySelector('.quest-concluida').disabled = true;
+                        
+                        const sectionMissaoMove = document.getElementById('section-missao-concluida');
+                        sectionMissaoMove.appendChild(missaoElement);
+                        
+                        console.log('🎉 Missão semanal concluída!');
+                    }
+                    
+                    return; // Não marcar como concluída ainda
+                } else {
+                    alert('📅 Este dia já foi concluído esta semana!');
+                    return;
+                }
+            } else {
+                alert('❌ Hoje não é um dia válido para esta missão semanal!');
+                return;
+            }
+        }
+        
+        // SE NÃO FOR SEMANAL, COMPLETAR NORMALMENTE
         missao.concluida = true;
         missao.dataConclusao = new Date().toISOString();
 
         console.log(' Missao foi concluida:', missao.titulo);
 
-        //atualizar visualmente
         const missaoElement = document.querySelector(`[data-id="${idMissao}"]`);
         if(missaoElement){
             missaoElement.style.opacity = '0.4';
@@ -266,60 +402,100 @@ function completarMissao(idMissao){
         }
 
         if(missao.concluida === true){
+           const sectionMissaoMove = document.getElementById('section-missao-concluida');
            sectionMissaoMove.appendChild(missaoElement); 
            console.log('Missão movida para concluídas!');
         }
-
-        console.log('agora pode adicionar xp');
     }else{
         console.log('Missao nao foi encontrada no array ID:', idMissao);
     }
 }
 
-// FUNÇÃO COMPLETAR SUB QUEST
+// 🔴 ATUALIZADA: FUNÇÃO COMPLETAR SUB QUEST COM SISTEMA INTELIGENTE
 function completarSubQuest(idMissao, tituloSubQuest) {
     const missao = missoes.find(m => m.id === idMissao);
     
     if (missao && missao.subQuests) {
-        const subQuest = missao.subQuests.find(sq => sq.titulo === tituloSubQuest);
+        const subQuestIndex = missao.subQuests.findIndex(sq => sq.titulo === tituloSubQuest);
+        const subQuest = missao.subQuests[subQuestIndex];
         
         if (subQuest) {
+            // 🔴 VERIFICAR SE ESTÁ BLOQUEADA (modo sequencial)
+            if (missao.modoSubquests === 'sequencial' && subQuestIndex > 0) {
+                const anteriorConcluida = missao.subQuests[subQuestIndex - 1].concluida;
+                if (!anteriorConcluida) {
+                    alert('🔒 Você precisa concluir a sub-missão anterior primeiro!');
+                    return;
+                }
+            }
+            
             subQuest.concluida = !subQuest.concluida;
             
             // Atualizar visualmente
             const missaoElement = document.querySelector(`[data-id="${idMissao}"]`);
-            const subQuestElements = missaoElement.querySelectorAll('.texto-subquest');
+            const listaSubquests = missaoElement.querySelector('.lista-subquests');
             
-            subQuestElements.forEach(element => {
-                if (element.textContent === tituloSubQuest) {
-                    const subQuestElement = element.closest('.subquest-item-display');
-                    
-                    if (subQuest.concluida) {
-                        subQuestElement.classList.add('concluida');
-                        subQuestElement.querySelector('.status-subquest').textContent = '✅';
-                    } else {
-                        subQuestElement.classList.remove('concluida');
-                        subQuestElement.querySelector('.status-subquest').textContent = '⏳';
+            // 🔴 ATUALIZAR TODAS AS SUB-QUESTS PARA ATUALIZAR ESTADOS DE BLOQUEIO
+            listaSubquests.innerHTML = '';
+            missao.subQuests.forEach((sq, index) => {
+                const subquestElement = document.createElement('div');
+                
+                // VERIFICAR SE ESTÁ BLOQUEADA (modo sequencial)
+                let bloqueada = false;
+                if (missao.modoSubquests === 'sequencial' && index > 0) {
+                    const anteriorConcluida = missao.subQuests[index - 1].concluida;
+                    if (!anteriorConcluida) {
+                        bloqueada = true;
                     }
-                    
-                    // Atualizar contador
-                    const concluidas = missao.subQuests.filter(sq => sq.concluida).length;
-                    const total = missao.subQuests.length;
-                    missaoElement.querySelector('.contador-subquests').textContent = `(${concluidas}/${total})`;
-                    
-                    console.log(`Sub quest "${tituloSubQuest}" ${subQuest.concluida ? 'concluída' : 'reaberta'}`);
                 }
+                
+                subquestElement.className = `subquest-item-display ${sq.concluida ? 'concluida' : ''} ${bloqueada ? 'bloqueada' : ''}`;
+                
+                subquestElement.innerHTML = `
+                    <span class="numero-subquest">${index + 1}.</span>
+                    <span class="texto-subquest">${sq.titulo}</span>
+                    <span class="status-subquest">${sq.concluida ? '✅' : (bloqueada ? '🔒' : '⏳')}</span>
+                `;
+                
+                listaSubquests.appendChild(subquestElement);
             });
+            
+            // Atualizar contadores e barra de progresso
+            const concluidas = missao.subQuests.filter(sq => sq.concluida).length;
+            const total = missao.subQuests.length;
+            const porcentagem = total > 0 ? (concluidas / total) * 100 : 0;
+            
+            missaoElement.querySelector('.contador-subquests').textContent = `(${concluidas}/${total})`;
+            missaoElement.querySelector('.contador-subquests-barra').textContent = `${concluidas}/${total} concluídas`;
+            missaoElement.querySelector('.progresso-subquests-barra').style.width = `${porcentagem}%`;
+            
+            // 🔴 VERIFICAR SE MISSÃO PRINCIPAL FOI COMPLETADA
+            if (concluidas >= total && total > 0) {
+                // MISSÃO PRINCIPAL COMPLETA!
+                missao.concluida = true;
+                missao.dataConclusao = new Date().toISOString();
+                
+                missaoElement.style.opacity = '0.4';
+                missaoElement.querySelector('.quest-concluida').disabled = true;
+                
+                const sectionMissaoMove = document.getElementById('section-missao-concluida');
+                sectionMissaoMove.appendChild(missaoElement);
+                
+                console.log('🎉 Missão principal concluída!');
+            }
+            
+            console.log(`Sub quest "${tituloSubQuest}" ${subQuest.concluida ? 'concluída' : 'reaberta'}`);
         }
     }
 }
 
-// FUNÇÃO GLOBAL PARA ATUALIZAR VISIBILIDADE
+// 🔴 ATUALIZADA: FUNÇÃO GLOBAL PARA ATUALIZAR VISIBILIDADE
 function atualizarVisibilidade (){
     const tipoSelecionado = document.querySelector('input[name="tipo"]:checked').value;
     const dificuldadeGroup = document.querySelector('.dificuldade-group');
     const diaSemana = document.querySelector('.dias-semana-group');
     const subQuest = document.querySelector('.subquests-group');
+    const modoSubquestsGroup = document.querySelector('.modo-subquests-group');
 
     console.log('Tipo selecionado:', tipoSelecionado);
 
@@ -339,8 +515,16 @@ function atualizarVisibilidade (){
     // SUB QUESTS, Mostrar só para "Principal" 
     if(tipoSelecionado === "Principal"){
         subQuest.style.display = 'block';
+        // 🔴 MOSTRAR OPÇÃO DE MODO TAMBÉM
+        if (modoSubquestsGroup) {
+            modoSubquestsGroup.style.display = 'block';
+        }
     } else {
         subQuest.style.display = 'none';
+        // 🔴 OCULTAR OPÇÃO DE MODO TAMBÉM
+        if (modoSubquestsGroup) {
+            modoSubquestsGroup.style.display = 'none';
+        }
         // LIMPAR SUB QUESTS QUANDO MUDAR DE "PRINCIPAL"
         const listaSubquest = document.querySelector('.subquests-list');
         listaSubquest.innerHTML = '';
@@ -443,6 +627,12 @@ openButtons.forEach(button => {
         if (listaSubquest) {
             listaSubquest.innerHTML = '';
             console.log('🧹 Sub-quests limpas ao abrir modal!');
+        }
+        
+        // 🔴 RESETAR MODO PARA "LIVRE" AO ABRIR MODAL
+        const radioLivre = document.querySelector('input[name="modoSubquests"][value="livre"]');
+        if (radioLivre) {
+            radioLivre.checked = true;
         }
         
         // ATUALIZAR VISIBILIDADE
