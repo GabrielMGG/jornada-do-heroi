@@ -112,7 +112,7 @@ html{
         position: relative;
         justify-content: center;
         align-items: center;
-        background-image: url(/assets/imagens/crown.png);
+        background-image: url(../imagens/crown.png);
         background-repeat: no-repeat;
         background-position: center;
         background-size: 50%;
@@ -339,7 +339,7 @@ html{
         border-radius: 15px;
         background: #FE9A00;
         box-shadow: 0 8px 15px -3px rgb(255 185 0 / 0.3), 0 4px 6px -4px rgb(255 185 0 / 0.3);
-        background-image: url(/assets/imagens/icons-quests/crown.svg);
+        background-image: url(../imagens/icons-quests/crown.svg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: 20px 20px;
@@ -398,7 +398,7 @@ html{
 
     /* 👇 Duas camadas: ícone e gradiente */
     background-image: 
-        url("/assets/imagens/icons-quests/check.svg"),
+        url("../imagens/icons-quests/check.svg"),
         linear-gradient(120deg, rgba(0, 172, 225, 1) 0%, rgba(0, 107, 248, 1) 100%);
 
     /* Ajustes */
@@ -763,7 +763,7 @@ html{
     height: 2.8rem;
     border: none;
     border-radius: 10px;
-    background-image: url(/assets/imagens/icons-close/x.svg);
+    background-image: url(../imagens/icons-close/x.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 20px;
