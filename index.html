@@ -17,7 +17,7 @@
         <section id="profile-head">
             <div class="profile">
                 <div class="conteiner-profile">
-                    <div class="circle"> <div class="number-circle">12</div> </div>
+                    <div class="circle"> <div class="player-level">12</div> </div>
                     <div class="char-title">
                         <p id="title" class="title-text">Aventureiro <img src="assets/imagens/sparkles.svg" height="12" width="12"></p>
                         <p id="classe" class="classe-text"> Druida</p></div>
@@ -69,11 +69,11 @@
             <div class="current-quest">
                 <div class="quest-section">
                     <div class="title-section">
-                        <img src="assets/imagens/swords.svg" alt="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#53eafd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-swords-icon lucide-swords"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/><line x1="5" x2="9" y1="14" y2="18"/><line x1="7" x2="4" y1="17" y2="20"/><line x1="3" x2="5" y1="19" y2="21"/></svg>
                         <h1> Missões Disponíveis</h1>
                     </div>
                     <div>
-                     <button id="form-modal" class="open-modal button-icon" data-modal="modal-1"> <img src="assets/imagens/plus.svg" width="20" height="20" class="img-position"> </button>
+                     <button id="form-modal" class="open-modal button-icon" data-modal="modal-1"> <span>Criar Missão</span> </button>
                     </div>
                 </div>
                 
@@ -87,9 +87,22 @@
                             <div class="conteiner-text">
                                 <div class="title-quest">
                                     <span class="title-habit">Conquistar a Academia Arcana</span>
-                                    <span><img src="assets/imagens/icons-quests/ellipsis-vertical.svg" width="16" height="16"></span>
+                                    <!--  ADICIONE ESTA PARTE NO MENU -->
+                                    <div class="quest-actions">
+                                        <button class="btn-options" title="Opções">
+                                            <img src="assets/imagens/icons-quests/ellipsis-vertical.svg" width="16" height="16">
+                                        </button>
+                                        <div class="options-menu" style="display: none;">
+                                            <button class="menu-item btn-editar"> Editar</button>
+                                            <button class="menu-item btn-deletar"> Deletar</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="description-quest">Complete o projeto de desenvolvimento do cliente</div>
+                            
+                                <div class="description-quest">Descrição da missão...</div>
+                            
+                                <div class="type-title">
+                                </div>
                 
                                 <!-- DIAS DA SEMANA (aparece só para missões semanais) -->
                                 <div class="dias-semana-display" style="display: none;">
@@ -184,7 +197,7 @@
         <dialog id="modal-1" class="modal">
             <div class="new-quest">
                 <h1>Nova Missão</h1>
-                <button class="close-modal">x</button>
+                <button class="close-modal"></button>
             </div>
         
             <form method="post" class="form">
@@ -320,7 +333,10 @@
 
 
     </div><!-- Fim do conteiner Mobile-->
-        
+
+    <!-- JAVA SCRIPT-->
+    <script src="assets/js/jogador.js"></script>    
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/ui.js"></script>
 </body>
 </html>

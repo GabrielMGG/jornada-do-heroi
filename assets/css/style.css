@@ -4,38 +4,82 @@ html{
 
 @media (max-width: 768px) {
 
-    .menu{
-        display: flex;
-        position: fixed;
-        bottom: 14px;
-        left: 50%;
-        transform: translateX(-50%); /* CENTRALIZA PERFEITAMENTE */
-        width: calc(100% - 28px); /*  100% - (14px esquerda + 14px direita) */
-        height: 70px;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px;
-        border: 1px solid #115575;
-        border-radius: 10px;
-        background-color: #131d32;
-        box-sizing: border-box;
+    /* ==========================
+   MENU INFERIOR MOBILE
+========================== */
+.menu {
+  position: fixed;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 28px);
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #115575;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #101828, #18263d);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  z-index: 100;
+}
 
-    }
+/* Cada div ocupa o mesmo espaço */
+.menu > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
 
-    .menu button{
-        border: none;
-        background: none;
-        padding: 16px;
-    }
+/* ===== BOTÕES ===== */
+.menu button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  color: #cfd8ff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 10px;
+  padding: 6px 10px;
+  width: 80px; /* largura fixa — todos iguais */
+  height: 60px; /* altura fixa — mantém o fundo igual */
+  transition: all 0.25s ease;
+}
 
-    
-    .pag-icon{
-        display: inline;
-        width: 8rem;
-        height: 4rem;
-        text-align: center;
-        color: white;
-    }
+/* ÍCONES */
+.menu button img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0.9) invert(0.1);
+  transition: all 0.25s ease;
+}
+
+/* ===== ESTADOS DE INTERAÇÃO ===== */
+.menu button:hover {
+  background-color: rgba(45, 70, 110, 0.5);
+  box-shadow: 0 0 6px rgba(90, 150, 255, 0.3);
+  transform: none; /* remove o movimento */
+}
+
+.menu button:active {
+  background-color: #1a3b58;
+  box-shadow: inset 0 0 6px rgba(80, 150, 255, 0.5);
+  transform: none;
+}
+
+/* ===== BOTÃO ATIVO (PÁGINA ATUAL) ===== */
+.menu button.active {
+  background-color: #193a63;
+  color: #6fb1ff;
+  box-shadow: 0 0 8px rgba(80, 150, 255, 0.5);
+}
+
 
 
 /*=====================================
@@ -73,7 +117,7 @@ html{
         background-position: center;
         background-size: 50%;
     }
-    .number-circle{
+    .player-level{
         width: 2.8rem;
         height: 2.8rem;
         border-radius: 50%;
@@ -187,7 +231,7 @@ html{
     }
     
     .active-quest p, .quest-completed p, .sequence p{
-        font-size: 12px;
+        font-size: 10px;
     }
     
     .active-quest span, .quest-completed span, .sequence span{
@@ -244,7 +288,8 @@ html{
         font-size: 16px;
     }
     .button-icon{
-        width: 3rem;
+        display: flex;
+        width: 10rem;
         height: 3rem;
         justify-content: center;
         align-items: center;
@@ -252,6 +297,9 @@ html{
         border-radius: 10px;
         background: #00ACE1;
         background: linear-gradient(120deg,rgba(0, 172, 225, 1) 0%, rgba(0, 107, 248, 1) 100%);
+    }
+    .button-icon span{
+        color: white;
     }
 
     /*=============================
@@ -369,6 +417,72 @@ html{
 
     .section-missao-concluida{
          margin-bottom: 2rem;
+    }
+
+    /* ======================================
+       MENU DE OPÇÕES (EDITAR/DELETAR)
+    ======================================= */
+    .quest-actions {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-options {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-options:hover {
+        background: rgba(83, 234, 253, 0.1);
+    }
+
+    .btn-options:active {
+        background: rgba(83, 234, 253, 0.2);
+    }
+
+    .options-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        padding: 8px;
+        z-index: 1000;
+        min-width: 120px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 8px 12px;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 12px;
+        transition: all 0.2s ease;
+    }
+
+    .menu-item:hover {
+        background: rgba(83, 234, 253, 0.1);
+    }
+
+    .btn-editar:hover {
+        color: #60a5fa;
+    }
+
+    .btn-deletar:hover {
+        color: #f87171;
     }
 
     /* ======================================
@@ -638,7 +752,11 @@ html{
     height: 2.8rem;
     border: none;
     border-radius: 10px;
-    background-color: #90a1b9;
+    background-image: url(/assets/imagens/icons-close/x.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    background-color: #243146;
     }
 
     .modal form {
