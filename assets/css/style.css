@@ -387,18 +387,29 @@ html{
         font-size: 14px;
         color: #fe9a00;
     }
-    .conteiner-button button{
-        width: 3rem;
-        height: 3rem;
-        border: none;
-        border-radius: 10px;
-        background-color: #0078f5;
-        box-shadow: 0 8px 15px -3px rgb(0 127 245 / 0.3), 0 4px 6px -4px rgb(0 127 245 / 0.3);
-        background-image: url(/assets/imagens/icons-quests/check.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 20px;
-     }
+    .quest-concluida {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 👇 Duas camadas: ícone e gradiente */
+    background-image: 
+        url("/assets/imagens/icons-quests/check.svg"),
+        linear-gradient(120deg, rgba(0, 172, 225, 1) 0%, rgba(0, 107, 248, 1) 100%);
+
+    /* Ajustes */
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    background-size: 24px 24px, cover;
+
+    box-shadow: 0 8px 15px -3px rgb(0 127 245 / 0.3), 
+                0 4px 6px -4px rgb(0 127 245 / 0.3);
+    cursor: pointer;
+}
     
     .rarity-title span, .type-title span{ 
         text-transform: capitalize;
