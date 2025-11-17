@@ -581,7 +581,7 @@ function atualizarNumeracaoSubquests() {
     
 }
 
-// 🔴 FUNÇÃO toggleMenu CORRIGIDA(pedi a ia verificar depois essa parte)
+// 🔴FUNÇÃO toggleMenu CORRIGIDA(pedi a ia verificar depois essa parte)
 function toggleMenu(event, missaoId) {
     event.stopPropagation();
     
@@ -718,4 +718,31 @@ openButtons.forEach(button => {
         modal.showModal();
     });
 });
+
+document.querySelectorAll('.close-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const modalId = btn.getAttribute('data-close');
+        const modal = document.getElementById(modalId);
+        modal.close(); 
+    });
+});
+
+document.querySelectorAll('dialog').forEach(modal => {
+    modal.addEventListener('click', e => {
+        const rect = modal.getBoundingClientRect();
+        const clickedInside =
+            e.clientX >= rect.left &&
+            e.clientX <= rect.right &&
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom;
+
+        if (!clickedInside) {
+            modal.close();
+        }
+    });
+});
+
+
+
+
 

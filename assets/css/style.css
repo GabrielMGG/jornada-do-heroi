@@ -5,80 +5,84 @@ html{
 @media (max-width: 768px) {
 
     /* ==========================
-   MENU INFERIOR MOBILE
-========================== */
-.menu {
-  position: fixed;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 28px);
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  border: 1px solid #115575;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #101828, #18263d);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  box-sizing: border-box;
-  z-index: 100;
-}
+     MENU INFERIOR MOBILE
+    ========================== */
+    .menu {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 28px);
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #115575;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #101828, #18263d);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    z-index: 100;
+    }
 
-/* Cada div ocupa o mesmo espaço */
-.menu > div {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
+    .menu a{
+        text-decoration: none;
+    }
 
-/* ===== BOTÕES ===== */
-.menu button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  border: none;
-  background: none;
-  color: #cfd8ff;
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-radius: 10px;
-  padding: 6px 10px;
-  width: 80px; /* largura fixa — todos iguais */
-  height: 60px; /* altura fixa — mantém o fundo igual */
-  transition: all 0.25s ease;
-}
+    /* Cada div ocupa o mesmo espaço */
+    .menu > div {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
 
-/* ÍCONES */
-.menu button img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0.9) invert(0.1);
-  transition: all 0.25s ease;
-}
+    /* ===== BOTÕES ===== */
+    .menu button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      border: none;
+      background: none;
+      color: #cfd8ff;
+      font-size: 1.2rem;
+      font-weight: 500;
+      border-radius: 10px;
+      padding: 6px 10px;
+      width: 80px; /* largura fixa — todos iguais */
+      height: 60px; /* altura fixa — mantém o fundo igual */
+      transition: all 0.25s ease;
+    }
 
-/* ===== ESTADOS DE INTERAÇÃO ===== */
-.menu button:hover {
-  background-color: rgba(45, 70, 110, 0.5);
-  box-shadow: 0 0 6px rgba(90, 150, 255, 0.3);
-  transform: none; /* remove o movimento */
-}
+    /* ÍCONES */
+    .menu button img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0.9) invert(0.1);
+      transition: all 0.25s ease;
+    }
 
-.menu button:active {
-  background-color: #1a3b58;
-  box-shadow: inset 0 0 6px rgba(80, 150, 255, 0.5);
-  transform: none;
-}
+    /* ===== ESTADOS DE INTERAÇÃO ===== */
+    .menu button:hover {
+      background-color: rgba(45, 70, 110, 0.5);
+      box-shadow: 0 0 6px rgba(90, 150, 255, 0.3);
+      transform: none; /* remove o movimento */
+    }
 
-/* ===== BOTÃO ATIVO (PÁGINA ATUAL) ===== */
-.menu button.active {
-  background-color: #193a63;
-  color: #6fb1ff;
-  box-shadow: 0 0 8px rgba(80, 150, 255, 0.5);
-}
+    .menu button:active {
+      background-color: #1a3b58;
+      box-shadow: inset 0 0 6px rgba(80, 150, 255, 0.5);
+      transform: none;
+    }
+
+    /* ===== BOTÃO ATIVO (PÁGINA ATUAL) ===== */
+    .menu button.active {
+      background-color: #193a63;
+      color: #6fb1ff;
+      box-shadow: 0 0 8px rgba(80, 150, 255, 0.5);
+    }
 
 
 
@@ -193,7 +197,7 @@ html{
 
     .bar-xp{
         width: 100%;
-        height: 2rem;
+        height: 3rem;
         border: 1px solid #16415b;
         border-radius: 20px;
     }
@@ -307,8 +311,8 @@ html{
     ===============================*/
     .conteiner-quest{
         width: 100%;
-        min-height: 115px; /* 🔴 CORREÇÃO: mudei height para min-height */
-        height: auto; /* 🔴 CORREÇÃO: permite crescer */
+        min-height: 115px; 
+        height: auto; 
         background-color: #1B273B;
         background: linear-gradient(180deg,rgba(27, 39, 59, 0.8) 10%, rgba(27, 39, 59, 0.5) 50%, rgba(27, 39, 59, 0.2) 90%);
         border: 1px solid #eb8000;
@@ -320,14 +324,14 @@ html{
     }
 
     .conteiner-text{
-        width: 100%; /* 🔴 CORREÇÃO: mudei de 85% para 100% */
+        width: 100%; 
     }
 
     .quest-header{
         display: flex;
         width: 100%;
         gap: 1rem;
-        align-items: flex-start; /* 🔴 CORREÇÃO: alinha no topo */
+        align-items: flex-start; 
         margin-bottom: 14px;
     }
 
@@ -354,16 +358,14 @@ html{
     .title-habit{
         font-size: 16px;
         color: white;
-        line-height: 1.3; /* 🔴 CORREÇÃO: melhor espaçamento */
+        line-height: 1.3; 
     }
     .description-quest{
         font-size: 14px;
         color: #90a1b9;
         margin-top: 4px;
-        line-height: 1.4; /* 🔴 CORREÇÃO: melhor espaçamento */
-        /* 🔴 REMOVIDO: white-space: nowrap; - deixa o texto quebrar linha */
-        /* 🔴 REMOVIDO: overflow: hidden; - permite conteúdo expandir */
-        /* 🔴 REMOVIDO: text-overflow: ellipsis; - remove os ... */
+        line-height: 1.4; 
+        
     }
 
     .quest-footer{
@@ -396,7 +398,7 @@ html{
     justify-content: center;
     align-items: center;
 
-    /* 👇 Duas camadas: ícone e gradiente */
+    /*  ícone e gradiente */
     background-image: 
         url("../imagens/icons-quests/check.svg"),
         linear-gradient(120deg, rgba(0, 172, 225, 1) 0%, rgba(0, 107, 248, 1) 100%);
@@ -498,7 +500,9 @@ html{
 
     /* ======================================
        ESTILOS PARA SUB-QUESTS E DIAS DA SEMANA
-       CORREÇÃO: MANTIDO APENAS UMA VERSÃO(PEDI IA PRA CONSERTAR UMA PARTE DA UMA OLHADA DEPOIS)
+       CORREÇÃO: MANTIDO APENAS UMA VERSÃO(PEDI IA PRA CONSERTAR UMA PARTE DA UMA OLHADA DEPOIS
+       /////////////////////////////
+       (esqueci o que era se tiver um erro no estilo das subquest olhar aqui primeiro) ////////////) 
     ======================================= */
     
     .subquests-display, .dias-semana-display {

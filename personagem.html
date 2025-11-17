@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personagem</title>
+
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/personagem.css">
+</head>
+<body>
+    <div class="container-mobile">
+
+        <!--================
+          Seçao do perfil
+        =================-->
+        <section id="profile" class="conteiner-profile">
+            <div class="profile">
+                <div class="circle-profile"></div>
+                <div class="lvl-profile">
+                    <img src="assets/imagens/icons-global/zap.svg">
+                    <div>
+                        <p>Nivel</p>
+                        <p>12</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="title">
+                <span class="classe"><img src="assets/imagens/stars-icon-personagem/sparkles (1).svg">Druida <img src="assets/imagens/stars-icon-personagem/sparkles (2).svg" alt=""> </span>
+                <span class="conquista-ativa">Lider inspirador</span>
+
+            </div>
+
+            <div class="dashboard">
+                <div class="poder">
+                    <img src="assets/imagens/icons-global/shield-azul.svg">
+                    <span class="poder-atual">406</span>
+                    <p>Poder</p>
+                    
+                </div>
+
+                <div class="num-missoe-concluidas">
+                    <img src="assets/imagens/icons-global/trending-up.svg">
+                    <span class="concluidas">20</span>
+                    <p>Missões</p>
+                </div>
+
+                <div class="streak">
+                    <img src="assets/imagens/icons-global/flame.svg" alt="">
+                    <span class="maior-streak">7</span>
+                    <p>Streak</p>
+
+                </div>
+            </div>
+
+            <div class="conteiner-xp">
+                <div class="xp-text">
+                    <p><img src="assets/imagens/icons-global/activity.svg">Experiência</p>
+                    <span class="number-xp">
+                        <span id="current-xp" class="current-xp">0</span>
+                        <span class="bar">/</span>
+                        <span id="xp-required" class="xp-required">100</span>
+                        <span>XP</span>
+                    </span>
+                </div>
+                <div class="bar-xp"> <span class="porcentagem">0%</span></div>
+                <div class="lvl">
+                    <span class="current-lvl">Level 1</span>
+                    <span class="next-lvl">Level 2</span>
+                </div>
+            </div>
+        </section>          
+        
+        
+
+        <section class="conteiner-atributos ">
+            <div class="title-atributos">
+                <p><img src="assets/imagens/icons-global/octagon.svg">Gráfico de Atributos</p>
+            </div>
+
+            <div class="dashboard-atributos">
+                <canvas id="meuRadar"></canvas>
+            </div>
+
+            <div class="atributos">
+                <div class="card-atributos">
+                    <div class="icon-forca">
+                    </div>
+                    <div class="texto-forca">
+                        <p>Força</p>
+                        <span class="number-forca">66 pts</span>
+                    </div>
+                </div>
+
+                <div class="card-atributos">
+                    <div class="icon-inteligencia">
+                    </div>
+                    <div class="texto-inteligencia">
+                        <p>Inteligencia</p>
+                        <span class="number-inteligencia">65 pts</span>
+                    </div>
+                </div>
+
+                 <div class="card-atributos">
+                    <div class="icon-agilidade">
+                    </div>
+                    <div class="texto-agilidade">
+                        <p>Agilidade</p>
+                        <span class="number-agilidade">71 pts</span>
+                    </div>
+                </div>
+
+                 <div class="card-atributos">
+                    <div class="icon-vitalidade">
+                    </div>
+                    <div class="texto-vitalidade">
+                        <p>Vitalidade</p>
+                        <span class="number-vitalidade">64 pts</span>
+                    </div>
+                </div>
+
+                 <div class="card-atributos">
+                    <div class="icon-sabedoria">
+                    </div>
+                    <div class="texto-sabedoria">
+                        <p>Sabedoria</p>
+                        <span class="number-sabedoria">66 pts</span>
+                    </div>
+                </div>
+
+                 <div class="card-atributos">
+                    <div class="icon-carisma">
+                    </div>
+                    <div class="texto-carisma">
+                        <p>Carisma</p>
+                        <span class="number-carisma">74 pts</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="conquistas-obtidas">
+            <div class="title-conquista">
+
+            </div>
+
+            <div class="grid-conquista">
+                
+            </div>
+        </section>
+
+
+
+
+
+    <!--=============
+        MENU
+    ==============-->
+        <nav class="menu">
+            <div>
+                <a href="index.html"><button id="pag-quest" class=" pag-icon"><img src="assets/imagens/icons-menu/scroll-text.svg" height="24" width="24">Missões</button></a>
+            </div>
+            <div >
+                <button id="pag-conquistas" class=" pag-icon"><img src="assets/imagens/icons-menu/trophy.svg" height="24" width="24">Conquistas</button>
+            </div>
+            <div>
+                <a href="personagem.html"><button id="pag-personagem" class=" pag-icon"><img src="assets/imagens/icons-menu/user.svg" height="24" width="24">Personagem</button></a>
+            </div>
+            <div> 
+                <button id="pag-config" class=" pag-icon"><img src="assets/imagens/icons-menu/cog.svg" height="24" width="24">Config</button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- JAVA SCRIPT-->
+    <script src="assets/js/jogador.js"></script>    
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/grafico.js"></script>
+</body>
+</html>

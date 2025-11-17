@@ -1,0 +1,493 @@
+html{
+    font-size: 65.5%; /*10px = 1 rem*/
+}
+
+
+    .conteiner-profile{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        border: 1px solid #084862;
+        border-radius: 15px;
+        padding: 16px 32px;
+        background: linear-gradient(to right, rgba(6, 182, 212, 0.10), rgba(59, 130, 246, 0.10),rgba(168, 85, 247, 0.10));;
+    }
+    .profile{
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100%;
+        
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    .circle-profile{
+        width: 12rem;
+        height: 12rem;
+        border: 3px solid #1585a0;
+        border-radius: 50%;
+        background: url(../imagens/crown.png);
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+    .lvl-profile{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       
+
+       width: 120px;
+       height: 60px;
+       padding: 8px 20px;
+       
+       border: 2px solid black;
+       border-radius: 40px;
+
+       background: linear-gradient(to right, #fbbf24, #f59e0b, #d97706);
+    }
+
+    .lvl-profile img{
+        margin-right: 5px;
+    }
+
+    .lvl-profile p{
+        display: flex;
+        font-size: 14px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .classe{
+        display: inline-block;
+        font-size: 16px;
+
+        background: linear-gradient(90deg, rgba(1, 201, 232, 1) 10%, rgba(180, 116, 245, 1) 90%);
+        background-size: 100% 100%;
+        background-position: left;
+        
+        background-clip: text;
+        -webkit-background-clip: text;
+        
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .conquista-ativa{
+        min-width: 150px;
+        min-height: 40px;
+        font-size: 14px;
+        color: #4bd8eb;
+
+        padding: 8px 24px;
+        
+        border: 2px solid;
+        border-radius: 10px;
+        background: linear-gradient(90deg,rgba(6, 182, 212, 0.3),rgba(59, 130, 246, 0.3),rgba(168, 85, 247, 0.3)
+);
+    }
+
+    .dashboard{
+        display: grid;
+        grid-auto-flow: column;          
+        grid-auto-columns: max-content;  
+        gap: 1.5rem;                     
+        
+        justify-content: center;         
+        width: 100%;                    
+        padding: 1rem 0;  
+        margin-top: 1rem;      
+
+     
+    }
+
+    .poder{
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+        height: 110px;
+
+        align-items: center;
+        padding: 16px;
+        gap: 1rem;
+
+        border: 1px solid #62748e;
+        border-radius: 10px;
+        background: rgba(15, 23, 42, 0.6);
+
+
+    }
+
+    .poder-atual{
+        font-size: 16px;
+        color: #00d3f3;
+    }
+
+    .poder p {
+        font-size: 12px;
+        color: #62748e;
+    }
+
+    .num-missoe-concluidas{
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+        height: 110px;
+
+        align-items: center;
+        padding: 16px;
+        gap: 1rem;
+
+        border: 1px solid #62748e;
+        border-radius: 10px;
+        background: rgba(15, 23, 42, 0.6);
+    }
+    .concluidas{
+        font-size: 16px;
+        color: #8ec5ff;
+    }
+
+    .num-missoe-concluidas p {
+        font-size: 12px;
+        color: #62748e;
+    }
+
+    .streak{
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+        height: 110px;
+
+        align-items: center;
+        padding: 16px;
+        gap: 1rem;
+
+        border: 1px solid #62748e;
+        border-radius: 10px;
+        background: rgba(15, 23, 42, 0.6);
+    }
+
+    .maior-streak{
+        font-size: 16px;
+        color: #ffb900;
+    }
+
+    .streak p{
+       font-size: 12px;
+       color: #62748e; 
+    }
+
+    /*=================
+      CONTEINER DO XP 
+    ===================*/
+
+    .conteiner-xp{
+        width: auto;
+        height: 115px;
+        margin-top: 1rem;
+    }
+
+    .xp-text{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+    
+    .xp-text p{
+        display: flex;
+        font-size: 14px;
+        color: #53eafd;
+        gap:8px;
+    }
+
+
+    .img-experiencia{
+        width: 30px;
+        height: 30px;
+        background: url(../imagens/icons-global/activity.svg);
+        background-repeat: no-repeat;
+    }
+
+    .number-xp{
+        font-size: 12px;
+        color: #90a1b9;
+    }
+
+    .bar-xp{
+        display: flex;
+        width: 100%;
+        height: 2rem;
+
+        justify-content: center;
+        align-items: center;
+
+        border: 1px solid #16415b;
+        border-radius: 20px;
+
+    }
+    
+    .porcentagem{
+        font-size: 12px;
+        color: white;
+    }
+
+    .lvl{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+    }
+
+    .lvl span{
+        font-size: 12px;
+    }
+
+    .current-lvl{
+        color: #90a1b9;
+    }
+    .next-lvl{
+        color: #ffb900;
+    }
+
+    /*==============================
+      FIM DO CONTEINER DO PROFILE
+    ==============================*/
+
+
+    /*==============================
+      COMEÇO DO CONTEINER ATRIBUTOS
+    ==============================*/
+
+    .conteiner-atributos{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 3rem;
+
+        background: linear-gradient(to bottom right,rgba(30, 41, 59, 0.80),rgba(60, 50, 90, 0.55));
+        backdrop-filter: blur(12px);
+        border-radius: 16px;
+        border: 1px solid rgba(168, 85, 247, 0.30);
+        padding: 24px;
+    }
+
+
+    .title-atributos p{
+        display: flex;
+        place-items: center;
+        gap: 10px;
+
+        font-size: 16px;
+        color: #dab2ff;
+    }
+
+    .title-atributos img{
+        background-color: rgba(218, 178, 255,0.1);
+        clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    }
+    
+    .dashboard-atributos{
+        padding: 3rem;
+    }
+    .atributos{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .card-atributos {
+        display: flex;
+        padding: 8px;
+        gap: 1rem;
+
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 10px;
+    }
+
+    .icon-forca,
+    .icon-inteligencia,
+    .icon-agilidade,
+    .icon-vitalidade,
+    .icon-sabedoria,
+    .icon-carisma {
+        width: 3.2rem;
+        height: 3.2rem;
+        border: none;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 22px;
+    }
+
+    /* ===== FORÇA ===== */
+    .icon-forca {
+        background-color: rgb(242, 24, 39);
+        background-image: url("../imagens/icons-global/sword.svg");
+    }
+
+    .texto-forca { display: flex; flex-direction: column; justify-content: space-between; }
+    .texto-forca p { font-size: 14px; color: #d7585e; }
+    .number-forca { font-size: 12px; color: #62748e; }
+
+    /* ===== INTELIGÊNCIA ===== */
+    .icon-inteligencia {
+        background-color: #1a65fe;
+        background-image: url("../imagens/icons-global/brain.svg");
+    }
+
+    .texto-inteligencia { display: flex; flex-direction: column; justify-content: space-between; }
+    .texto-inteligencia p { font-size: 14px; color: #51a2ff; }
+    .number-inteligencia { font-size: 12px; color: #62748e; }
+
+    /* ===== AGILIDADE ===== */
+    .icon-agilidade {
+        background-color: #d99200;
+        background-image: url("../imagens/icons-global/chart-no-axes-gantt.svg");
+    }
+
+    .texto-agilidade { display: flex; flex-direction: column; justify-content: space-between; }
+    .texto-agilidade p { font-size: 14px; color: #e1b306; }
+    .number-agilidade { font-size: 12px; color: #62748e; }
+
+    /* ===== VITALIDADE ===== */
+    .icon-vitalidade {
+        background-color: #00b043;
+        background-image: url("../imagens/icons-global/heart.svg");
+    }
+
+    .texto-vitalidade { display: flex; flex-direction: column; justify-content: space-between; }
+    .texto-vitalidade p { font-size: 14px; color: #07c96b; }
+    .number-vitalidade { font-size: 12px; color: #62748e; }
+
+    /* ===== SABEDORIA ===== */
+    .icon-sabedoria {
+        background-color: #9f28fe;
+        background-image: url("../imagens/icons-global/book-open-text.svg");
+    }
+
+    .texto-sabedoria { display: flex; flex-direction: column; justify-content: space-between; }
+    .texto-sabedoria p { font-size: 14px; color: #b472ee; }
+    .number-sabedoria { font-size: 12px; color: #62748e; }
+
+    /* ===== CARISMA ===== */
+    .icon-carisma {
+        background-color: #ec0f83;
+        background-image: url("../imagens/icons-global/users.svg");
+    }
+
+    .texto-carisma { display: flex; flex-direction: column; justify-content: space-between; }
+    .texto-carisma p { font-size: 14px; color: #fb64b6; }
+    .number-carisma { font-size: 12px; color: #62748e; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* ==========================
+     MENU INFERIOR MOBILE
+    ========================== */
+    .menu {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 28px);
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #115575;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #101828, #18263d);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    z-index: 100;
+    }
+
+    .menu a{
+        text-decoration: none;
+    }
+
+    /* Cada div ocupa o mesmo espaço */
+    .menu > div {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ===== BOTÕES ===== */
+    .menu button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      border: none;
+      background: none;
+      color: #cfd8ff;
+      font-size: 1.2rem;
+      font-weight: 500;
+      border-radius: 10px;
+      padding: 6px 10px;
+      width: 80px; /* largura fixa — todos iguais */
+      height: 60px; /* altura fixa — mantém o fundo igual */
+      transition: all 0.25s ease;
+    }
+
+    /* ÍCONES */
+    .menu button img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0.9) invert(0.1);
+      transition: all 0.25s ease;
+    }
+
+    /* ===== ESTADOS DE INTERAÇÃO ===== */
+    .menu button:hover {
+      background-color: rgba(45, 70, 110, 0.5);
+      box-shadow: 0 0 6px rgba(90, 150, 255, 0.3);
+      transform: none; /* remove o movimento */
+    }
+
+    .menu button:active {
+      background-color: #1a3b58;
+      box-shadow: inset 0 0 6px rgba(80, 150, 255, 0.5);
+      transform: none;
+    }
+
+    /* ===== BOTÃO ATIVO (PÁGINA ATUAL) ===== */
+    .menu button.active {
+      background-color: #193a63;
+      color: #6fb1ff;
+      box-shadow: 0 0 8px rgba(80, 150, 255, 0.5);
+    }
+

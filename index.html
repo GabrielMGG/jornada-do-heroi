@@ -130,8 +130,8 @@
                                         <!-- O JavaScript vai preencher aqui -->
                                     </div>
                                 </div>
-                            </div> <!-- 🔴 CORREÇÃO: FECHAMENTO CORRETO DO conteiner-text -->
-                        </div> <!-- 🔴 CORREÇÃO: FECHAMENTO CORRETO DO quest-header -->
+                            </div> 
+                        </div> 
                         <div class="quest-footer">
                             <div class="conteiner-type">
                                 <div class="rarity-title"><span>Lendario</span></div>
@@ -176,13 +176,13 @@
         ==============-->
         <nav class="menu">
             <div>
-                <button id="pag-quest" class=" pag-icon"><img src="assets/imagens/icons-menu/scroll-text.svg" height="24" width="24">Missões</button>
+                <a href="index.html"><button id="pag-quest" class=" pag-icon"><img src="assets/imagens/icons-menu/scroll-text.svg" height="24" width="24">Missões</button></a>
             </div>
             <div >
                 <button id="pag-conquistas" class=" pag-icon"><img src="assets/imagens/icons-menu/trophy.svg" height="24" width="24">Conquistas</button>
             </div>
             <div>
-                <button id="pag-personagem" class=" pag-icon"><img src="assets/imagens/icons-menu/user.svg" height="24" width="24">Personagem</button>
+                <a href="personagem.html"><button id="pag-personagem" class=" pag-icon"><img src="assets/imagens/icons-menu/user.svg" height="24" width="24">Personagem</button></a>
             </div>
             <div> 
                 <button id="pag-config" class=" pag-icon"><img src="assets/imagens/icons-menu/cog.svg" height="24" width="24">Config</button>
@@ -197,7 +197,7 @@
         <dialog id="modal-1" class="modal">
             <div class="new-quest">
                 <h1>Nova Missão</h1>
-                <button class="close-modal"></button>
+                <button  class="close-modal" data-close="modal-1"></button>
             </div>
         
             <form method="post" class="form">
@@ -239,7 +239,7 @@
                         <label class="tipo-card">
                             <input type="radio" name="dificuldade" value="novato" checked>
                             <span class="card-content">
-                                <strong>🥷 Novato</strong>
+                                <strong>Novato</strong>
                                 <small>Faltas: 2/semana</small>
                             </span>
                         </label>
@@ -247,7 +247,7 @@
                         <label class="tipo-card">
                             <input type="radio" name="dificuldade" value="expert">
                             <span class="card-content">
-                                <strong>🧙 Expert</strong>
+                                <strong>Expert</strong>
                                 <small>Faltas: 1/semana</small>
                             </span>
                         </label>
@@ -255,7 +255,7 @@
                         <label class="tipo-card">
                             <input type="radio" name="dificuldade" value="mestre">
                             <span class="card-content">
-                                <strong>🐉 Mestre</strong>
+                                <strong>Mestre</strong>
                                 <small>Faltas: 0/semana</small>
                             </span>
                         </label>
