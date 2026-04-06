@@ -149,6 +149,6 @@ function obterStatusJogador() {
 // ========================================
 // LOG INICIAL (para debug)
 // ========================================
-console.log('✅ Sistema de jogador carregado!');
-console.log(`👤 ${jogador.nome} - Level ${jogador.nivel}`);
-console.log(`📊 XP: ${jogador.xpAtual}/${calcularXPNecessario(jogador.nivel)}`);
+console.log('Sistema de jogador carregado!');
+console.log(` ${jogador.nome} - Level ${jogador.nivel}`);
+console.log(`XP: ${jogador.xpAtual}/${calcularXPNecessario(jogador.nivel)}`);

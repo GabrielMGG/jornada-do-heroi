@@ -1,11 +1,16 @@
-const missoes = [];
+let missoes = [];
 let menuAberto = null;
+
+function salvarMissoesLS(){
+    localStorage.setItem("missoes", JSON.stringify(missoes))
+}
 
 document.addEventListener('DOMContentLoaded', function(){
     const form = document.querySelector('.form');
     form.addEventListener('submit', function(evento){
         evento.preventDefault();
         salvarMissao();
+        salvarMissoesLS();
     });
 });
 
@@ -248,10 +253,35 @@ function criarMissao(missaoData){
     conteiner.appendChild(novaMissaoElement);
 
     questItem.setAttribute('data-id', missaoData.id);
+    salvarMissoesLS();
 
 }
 
-// 🔴 EVENT LISTENER COMPLETAMENTE CORRIGIDO
+function carregarMissoes(){
+    const dadosSalvos = localStorage.getItem("missoes");
+
+    if(dadosSalvos){
+        missoes = JSON.parse(dadosSalvos);
+
+        missoes.forEach(function(missaoData){
+            const cardQuest = criarMissao(missaoData);
+
+            // Se a missão já estava concluída, mover para a seção correta
+            if(missaoData.concluida) {
+                const elemento = document.querySelector(`[data-id="${missaoData.id}"]`);
+                const sectionConcluida = document.getElementById('section-missao-concluida');
+                if(elemento && sectionConcluida) {
+                    elemento.style.opacity = '0.4';
+                    elemento.querySelector('.quest-concluida').disabled = true;
+                    sectionConcluida.appendChild(elemento);
+                }
+            }
+        });
+        
+    }
+}
+
+// EVENT LISTENER COMPLETAMENTE CORRIGIDO
 document.addEventListener('click', function(event){
     // Concluir missão
     if(event.target.classList.contains('quest-concluida')){
@@ -449,10 +479,12 @@ function completarSubQuest(idMissao, tituloSubQuest) {
             }
             
             subQuest.concluida = !subQuest.concluida;
+
             
             const missaoElement = document.querySelector(`[data-id="${idMissao}"]`);
             const listaSubquests = missaoElement.querySelector('.lista-subquests');
             
+            salvarMissoesLS();
             listaSubquests.innerHTML = '';
             missao.subQuests.forEach((sq, index) => {
                 const subquestElement = document.createElement('div');
@@ -537,6 +569,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     atualizarVisibilidade();
+    salvarMissoesLS();
 });
 
 const botaoAddSubquest = document.querySelector('.add-subquest');
@@ -676,16 +709,23 @@ function deletarMissao(idMissao, confirmar = true) {
     if (index !== -1) {
         missoes.splice(index, 1);
     }
+
+    salvarMissoesLS();
     
     const missaoElement = document.querySelector(`[data-id="${idMissao}"]`);
     if (missaoElement) {
         missaoElement.remove();
+
     }
     
     
     if (menuAberto) {
         menuAberto.style.display = 'none';
         menuAberto = null;
+    }
+
+    if (typeof atualizarContadoresMissoes === 'function') {
+        atualizarContadoresMissoes();
     }
 }
 
@@ -742,6 +782,8 @@ document.querySelectorAll('dialog').forEach(modal => {
     });
 });
 
+
+carregarMissoes();
 
 
 

@@ -2,7 +2,7 @@ html{
     font-size: 65.5%; /*10px = 1 rem*/
 }
 
-
+@media (max-width: 768px) {
     .conteiner-profile{
         display: flex;
         flex-direction: column;
@@ -278,7 +278,7 @@ html{
         backdrop-filter: blur(12px);
         border-radius: 16px;
         border: 1px solid rgba(168, 85, 247, 0.30);
-        padding: 24px;
+        padding: 20px;
     }
 
 
@@ -297,6 +297,9 @@ html{
     }
     
     .dashboard-atributos{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 3rem;
     }
     .atributos{
@@ -491,3 +494,4 @@ html{
       box-shadow: 0 0 8px rgba(80, 150, 255, 0.5);
     }
 
+}

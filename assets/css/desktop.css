@@ -1,0 +1,516 @@
+:root {
+    /* Cores de Fundo */
+    --bg-main: #0b0e14;
+    --bg-card: #151a24;
+    --bg-card-alt: #1c2331;
+    
+    /* Cores de Destaque */
+    --primary-cyan: #53eafd;
+    --primary-blue: #2d5bff;
+    --accent-orange: #ff9d2e;
+    --accent-gold: #ffd230;
+    --xp-purple: #9d50bb;
+    
+    /* Texto */
+    --text-main: #e0e6ed;
+    --text-dim: #94a3b8;
+    
+    /* Bordas e Sombras */
+    --border-color: rgba(255, 255, 255, 0.05);
+    --neon-shadow: 0 0 15px rgba(83, 234, 253, 0.2);
+}
+
+/* ==========================================
+   LAYOUT DESKTOP (GRID PRINCIPAL)
+   ========================================== */
+
+@media (min-width: 1024px){
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #05070a; /* Fundo mais escuro como no Figma */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+
+/* ==========================================
+   2. LAYOUT EM GRID (3 COLUNAS)
+   ========================================== */
+.container-mobile {
+    display: grid;
+    grid-template-columns: 280px 1fr 300px; /* Coluna esquerda | Missões | Coluna direita */
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* ==========================================
+   3. COLUNA ESQUERDA: PERFIL
+   ========================================== */
+#profile-head {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 30px 20px;
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    height: fit-content;
+    position: sticky;
+    top: 40px;
+}
+
+.circle {
+    width: 120px;
+    height: 120px;
+    border: 3px solid var(--primary-cyan);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(83, 234, 253, 0.2);
+    background: radial-gradient(circle, rgba(83, 234, 253, 0.1) 0%, transparent 70%);
+}
+
+.player-level {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    color: var(--accent-gold);
+}
+
+.char-title { text-align: center; margin-bottom: 30px; }
+.title-text { 
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem; 
+    color: var(--primary-cyan); 
+    text-transform: uppercase;
+}
+.classe-text { color: var(--text-dim); font-size: 0.9rem; margin-top: 5px; display: block; }
+
+/* Barra de XP */
+.conteiner-xp { margin: 25px 0; }
+.xp-text { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 10px; color: var(--text-dim); }
+.bar-xp {
+    height: 8px;
+    background: #000;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.bar-xp::before {
+    content: ""; position: absolute; left: 0; top: 0; height: 100%; width: 45%; /* Dinâmico */
+    background: linear-gradient(90deg, var(--primary-cyan), var(--primary-blue));
+    box-shadow: 0 0 10px var(--primary-cyan);
+}
+
+/* Stats Rápidos */
+.sequence-quest { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
+.active-quest, .quest-completed, .sequence {
+    display: flex; justify-content: space-between;
+    font-size: 0.9rem; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.sequence-quest span { color: var(--primary-cyan); font-weight: bold; }
+
+/* ==========================================
+   4. COLUNA CENTRAL: DASHBOARD DE MISSÕES
+   ========================================== */
+#section-missao-ativa {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quest-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.title-section { display: flex; align-items: center; gap: 15px; }
+.title-section h1 { font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; }
+
+.open-modal {
+    background: var(--primary-blue);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(45, 91, 255, 0.3);
+    transition: 0.3s;
+}
+
+.open-modal:hover { background: #4069ff; transform: translateY(-2px); }
+
+/* Card da Missão (Estilo Lendário) */
+.conteiner-quest {
+    background: linear-gradient(145deg, #12161f, #0d1017);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+/* A borda colorida de raridade (ex: Lendária) */
+.conteiner-quest.lendaria {
+    border-left: 4px solid #ffd230;
+    box-shadow: inset 5px 0 15px rgba(255, 210, 48, 0.05);
+}
+
+
+.conteiner-quest:hover { background: var(--bg-card-hover); border-color: var(--border-glow); }
+
+.title-habit {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.25rem;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+.description-quest { color: var(--text-dim); margin: 12px 0; line-height: 1.5; }
+
+/* Footer do Card */
+.quest-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05);
+}
+.conteiner-type { display: flex; gap: 12px; }
+.rarity-title span { 
+    background: rgba(255, 157, 46, 0.1); 
+    color: var(--accent-orange); 
+    padding: 4px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase;
+}
+
+.xp-gain { display: flex; align-items: center; gap: 8px; color: var(--accent-gold); font-weight: bold; }
+
+.quest-concluida {
+    width: 35px; height: 35px; border: 2px solid var(--primary-blue);
+    background: transparent; border-radius: 8px; cursor: pointer;
+    transition: 0.3s; position: relative;
+}
+.quest-concluida:hover { background: var(--primary-blue); }
+.quest-concluida::after { content: "✓"; color: #fff; font-weight: bold; }
+
+/* ==========================================
+   5. MENU INFERIOR FLUTUANTE
+   ========================================== */
+.menu {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(17, 20, 29, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 12px 40px;
+    border-radius: 100px;
+    display: flex;
+    gap: 40px;
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.pag-icon {
+    background: transparent; border: none; color: var(--text-dim);
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    cursor: pointer; font-size: 0.75rem; transition: 0.2s;
+}
+.pag-icon:hover { color: var(--primary-cyan); transform: translateY(-3px); }
+.pag-icon img { filter: brightness(0.8); width: 20px; }
+
+/* ==========================================
+   6. AJUSTE PARA "MISSÕES CONCLUÍDAS"
+   ========================================== */
+#section-missao-concluida {
+    grid-column: 2; /* Fica abaixo das ativas na mesma coluna central */
+    opacity: 0.6;
+    margin-top: 40px;
+}
+
+/* ==========================================
+   ESTILIZAÇÃO DO CARD DE MISSÃO (TEMPLATE)
+   ========================================== */
+
+.conteiner-quest {
+    background: #151a24;
+    border: 1px solid rgba(83, 234, 253, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    transition: 0.3s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Borda colorida baseada na raridade (Ex: Lendário) */
+.conteiner-quest {
+    border-left: 4px solid #ff9d2e; /* Cor padrão laranja */
+}
+
+/* Cabeçalho do Card (Título e Menu) */
+.quest-header {
+    display: flex;
+    gap: 15px;
+}
+
+.conteiner-text {
+    flex: 1;
+}
+
+.title-quest {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+.title-habit {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* MENU DE OPÇÕES (EDITAR / DELETAR) */
+.quest-actions {
+    position: relative;
+}
+
+.btn-options {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.btn-options:hover { opacity: 1; }
+
+.options-menu {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    background: #1c2331;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 5px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.menu-item {
+    background: transparent;
+    border: none;
+    color: #e0e6ed;
+    padding: 8px 15px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.menu-item:hover { background: rgba(83, 234, 253, 0.1); color: #53eafd; }
+.btn-deletar:hover { background: rgba(255, 71, 71, 0.1); color: #ff4747; }
+
+/* RODAPÉ DO CARD */
+.quest-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.conteiner-type {
+    display: flex;
+    gap: 8px;
+}
+
+/* Badges (Raridade e Tipo) */
+.rarity-title span, .type-title span {
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.rarity-title span { color: #ff9d2e; background: rgba(255, 157, 46, 0.1); }
+.type-title span { color: #53eafd; }
+
+/* BOTÃO CONCLUIR E XP */
+.conteiner-button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.xp-gain {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #ffd230;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.quest-concluida {
+    width: 32px;
+    height: 32px;
+    background: rgba(45, 91, 255, 0.1);
+    border: 2px solid #2d5bff;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.quest-concluida:hover {
+    background: #2d5bff;
+    box-shadow: 0 0 10px rgba(45, 91, 255, 0.5);
+}
+
+.quest-concluida::after {
+    content: "✓";
+    font-weight: bold;
+}
+
+/* ==========================================
+   ESTILO DO MODAL (NOVA MISSÃO)
+   ========================================== */
+
+/* O fundo escurecido atrás do modal */
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+/* O corpo do modal */
+.modal {
+    background: #11141d;
+    color: #e0e6ed;
+    border: 1px solid #53eafd;
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    margin: auto; /* Centraliza na tela */
+    box-shadow: 0 0 30px rgba(83, 234, 253, 0.2);
+}
+
+/* Título do Modal */
+.new-quest h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.8rem;
+    color: #53eafd;
+    margin-bottom: 20px;
+}
+
+/* Estilizando o Formuário dentro do Modal */
+.form label p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+
+/* Inputs e Textarea */
+.form input[type="text"],
+.form textarea {
+    width: 100%;
+    background: #080a0f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    outline: none;
+}
+
+.form input:focus, .form textarea:focus {
+    border-color: #53eafd;
+}
+
+/* Botões de Opção (Cards de Categoria) */
+.tipo-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tipo-card {
+    cursor: pointer;
+    text-align: center;
+}
+
+.tipo-card input {
+    display: none; /* Esconde o rádio original */
+}
+
+.card-content {
+    display: block;
+    padding: 10px;
+    background: #1c2331;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.tipo-card input:checked + .card-content {
+    border-color: #53eafd;
+    background: rgba(83, 234, 253, 0.1);
+    color: #53eafd;
+}
+
+/* Botão de Criar Missão Final */
+button[name="criar-missao"] {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    background: #2d5bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(45, 91, 255, 0.4);
+}
+
+button[name="criar-missao"]:hover {
+    background: #4069ff;
+    transform: translateY(-2px);
+}
+
+/* Botão de fechar (X) */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.close-modal::after { content: "×"; }
+}
