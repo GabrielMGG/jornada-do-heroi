@@ -1,28 +1,73 @@
-/* Variáveis para o TEMA ESCURO (padrão atual) */
-:root .darktema {
-    --bg-body: #0b1226;
-    --bg-container: #17223a;
-    --bg-card: rgba(27, 39, 59, 0.8);
-    --bg-card-gradient: linear-gradient(180deg, rgba(27, 39, 59, 0.8) 10%, rgba(27, 39, 59, 0.5) 50%, rgba(27, 39, 59, 0.2) 90%);
-    --bg-modal: linear-gradient(180deg, rgba(27, 40, 59, 1) 10%, rgba(26, 37, 57, 1) 50%, rgba(21, 32, 52, 1) 90%);
-    --bg-input: #0b1226;
-    --bg-menu: linear-gradient(145deg, #101828, #18263d);
-    --shadow-card: 1px 10px 25px -1px rgba(0, 0, 0, 0.5);
-    --text-primary: #ffffff;
+/* Variáveis para o TEMA CLARO */
+:root.lighttema {
+    /* Backgrounds Principais */
+    --bg-container: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --bg-card-gradient: linear-gradient(180deg, #ffffff 0%, #F1F5F9 100%);
+    --bg-modal: #ffffff;
+    --bg-input: #F8FAFC;
+    --bg-menu: rgba(255, 255, 255, 0.95);
+    
+    /* Subquests e Grupos */
+    --bg-subquest: #F8FAFC;
+    --border-subquest: 1px solid #E2E8F0;
+    --bg-item-display: #ffffff;
+
+    /* Cores de Texto */
+    --text-primary: #1E293B;   /* slate-800 */
+    --text-secondary: #475569; /* slate-600 */
+    --text-muted: #94A3B8;     /* slate-400 */
+    --accent-color: #0891B2;   /* cyan-600 */
+
+    /* Raridades e Status */
+    --color-common: #64748B;
+    --color-rare: #2563EB;
+    --color-epic: #9333EA;
+    --color-legendary: #D97706;
+    --color-success: #22C55E;
+
+    /* Efeitos */
+    --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    --border-default: 1px solid #E2E8F0;
 }
 
-/* Variáveis para o TEMA CLARO */
-:root .lighttema {
-    --bg-body: #f0f4f8; /* Azul acinzentado bem clarinho */
-    --bg-container: #ffffff;
-    --bg-card: rgba(255, 255, 255, 0.9);
-    --bg-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%, rgba(240, 244, 248, 0.7) 90%);
-    --bg-modal: #ffffff;
-    --bg-input: #f8fafc;
-    --bg-menu: linear-gradient(145deg, #ffffff, #e2e8f0);
-    --shadow-card: 0 10px 20px rgba(0, 0, 0, 0.1);
-    --text-primary: #1e293b; /* Cor de texto escura para leitura */
+
+/* Variáveis para o TEMA ESCURO (padrão atual) */
+:root.darktema {
+    /* Backgrounds Principais - Inspirado no Guia */
+    --bg-container: #0F172A; /* slate-900 */
+    
+    /* Gradiente dos Cards (slate-800/90 para slate-900/90) */
+    --bg-card: rgba(30, 41, 59, 0.9); 
+    --bg-card-gradient: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+    
+    --bg-modal: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    --bg-input: #020617; /* slate-950 */
+    --bg-menu: rgba(15, 23, 42, 0.95); /* slate-900/95 */
+    
+    /* Subquests e Elementos de Interface */
+    --bg-subquest: rgba(15, 23, 42, 0.5); /* slate-900/50 */
+    --borde-subquest: 1px solid rgba(51, 65, 85, 0.5); /* slate-700/50 */
+    --bg-item-display: rgba(30, 41, 59, 0.5); /* slate-800/50 */
+
+    /* Cores de Texto (Mais claras para contraste no escuro) */
+    --text-primary: #F1F5F9;   /* slate-100 */
+    --text-secondary: #94A3B8; /* slate-400 */
+    --text-muted: #64748B;     /* slate-500 */
+    --accent-color: #22D3EE;   /* cyan-400 */
+
+    /* Raridades (Cores vibrantes para brilho) */
+    --color-common: #94A3B8;
+    --color-rare: #60A5FA;
+    --color-epic: #C084FC;
+    --color-legendary: #FBBF24;
+    --color-success: #4ADE80;
+
+    /* Efeitos de Glow e Bordas */
+    --border-default: 1px solid rgba(6, 182, 212, 0.2); /* cyan-500/20 */
+    --shadow-card: 0 10px 25px -1px rgba(0, 0, 0, 0.5), 0 0 10px rgba(6, 182, 212, 0.1);
 }
+
 
 html{
     font-size: 65.5%; /*10px = 1 rem*/
@@ -34,52 +79,51 @@ html{
      MENU INFERIOR MOBILE
     ========================== */
     .menu {
-    position: fixed;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 28px);
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px;
-    border: 1px solid #115575;
-    border-radius: 12px;
-    background: linear-gradient(145deg, #101828, #18263d);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    box-sizing: border-box;
-    z-index: 100;
+        position: fixed;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 28px);
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        border: 1px solid #115575;
+        border-radius: 12px;
+        background: var(--bg-menu); /* Variável aplicada */
+        box-shadow: var(--shadow-card); /* Variável aplicada */
+        box-sizing: border-box;
+        z-index: 100;
     }
 
-    .menu a{
+    .menu a, .menu a:visited {
+        color: var(--text-primary);
         text-decoration: none;
     }
 
-    /* Cada div ocupa o mesmo espaço */
     .menu > div {
-      flex: 1;
-      display: flex;
-      justify-content: center;
+        flex: 1;
+        display: flex;
+        justify-content: center;
     }
 
-    /* ===== BOTÕES ===== */
     .menu button {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      border: none;
-      background: none;
-      color: #cfd8ff;
-      font-size: 1.2rem;
-      font-weight: 500;
-      border-radius: 10px;
-      padding: 6px 10px;
-      width: 80px; /* largura fixa — todos iguais */
-      height: 60px; /* altura fixa — mantém o fundo igual */
-      transition: all 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        border: none;
+        background: none;
+        color: var(--text-primary); /* Variável aplicada */
+        font-size: 1.2rem;
+        font-weight: 500;
+        border-radius: 10px;
+        padding: 6px 10px;
+        width: 80px;
+        height: 60px;
+        transition: all 0.25s ease;
     }
 
     /* ÍCONES */
@@ -138,7 +182,7 @@ html{
         height: 6.4rem;
         border: 2px solid #15839e;
         border-radius: 50%;
-        background-color: #2b394f;
+        background-color: var(--bg-container); /* Variável aplicada */
         position: relative;
         justify-content: center;
         align-items: center;
@@ -160,8 +204,8 @@ html{
     }
     
     
-    .classe-text, .title-text{
-        color: white;
+    .classe-text, .title-text {
+        color: var(--text-primary); /* Variável aplicada */
     }
     .title-text{
         font-size: 16px;
@@ -196,12 +240,12 @@ html{
       CONTEINER DO XP 
     ===================*/
 
-    .conteiner-xp{
+    .conteiner-xp {
         width: auto;
         height: 115px;
         border: 2px solid #0d3c54;
         border-radius: 15px;
-        background-color: #17223a;
+        background-color: var(--bg-container); /* Variável aplicada */
         padding: 1.6rem;
     }
 
@@ -221,11 +265,12 @@ html{
         color: #90a1b9;
     }
 
-    .bar-xp{
+    .bar-xp {
         width: 100%;
         height: 3rem;
         border: 1px solid #16415b;
         border-radius: 20px;
+        background-color: var(--bg-input); /* Variável aplicada */
     }
 
     .lvl{
@@ -275,8 +320,6 @@ html{
         border-radius: 10px;
         color: #00d3f3;
         padding: 12px;
-        background: #162136;
-        background: linear-gradient(90deg, rgba(22, 33, 54, 1) 10%,rgba(17, 26, 46, 1) 50%,rgba(14, 24, 44, 1) 90%)
     }
     .quest-completed{
         height: 6rem;
@@ -285,8 +328,6 @@ html{
         border-radius: 10px;
         color: #c27aff;
         padding: 12px;
-        background: #162136;
-        background: linear-gradient(90deg, rgba(22, 33, 54, 1) 10%,rgba(17, 26, 46, 1) 50%,rgba(14, 24, 44, 1) 90%)
     }
     .sequence{
         height: 6rem;
@@ -295,8 +336,11 @@ html{
         border-radius: 10px;
         color: #ad8411;
         padding: 12px;
-        background: #162136;
-        background: linear-gradient(90deg, rgba(22, 33, 54, 1) 10%,rgba(17, 26, 46, 1) 50%,rgba(14, 24, 44, 1) 90%)
+    }
+
+    .active-quest, .quest-completed, .sequence {
+        background: var(--bg-card-gradient); /* Variável aplicada */
+        box-shadow: var(--shadow-card); /* Variável aplicada */
     }
 
 /*=====================================
@@ -335,16 +379,15 @@ html{
     /*=============================
     Estilo do conteiner das missoes
     ===============================*/
-    .conteiner-quest{
+.conteiner-quest {
         width: 100%;
         min-height: 115px; 
         height: auto; 
-        background-color: #1B273B;
-        background: linear-gradient(180deg,rgba(27, 39, 59, 0.8) 10%, rgba(27, 39, 59, 0.5) 50%, rgba(27, 39, 59, 0.2) 90%);
+        background: var(--bg-card-gradient); /* Variável aplicada */
         border: 1px solid #eb8000;
         border-bottom: 0;
         border-radius: 15px;
-        box-shadow: 1px 10px 25px -1px rgba(235, 129, 0, 0.3), 1px 8px 10px -1px rgb(235 128 0 / 0.3);
+        box-shadow: var(--shadow-card); /* Variável aplicada */
         margin: 20px 0;
         padding: 14px;
     }
@@ -383,7 +426,7 @@ html{
 
     .title-habit{
         font-size: 16px;
-        color: white;
+        color: var(--text-primary);
         line-height: 1.3; 
     }
     .description-quest{
@@ -488,7 +531,7 @@ html{
         position: absolute;
         top: 100%;
         right: 0;
-        background: #1e293b;
+        background: var(--bg-container); /* Variável aplicada */
         border: 1px solid #334155;
         border-radius: 8px;
         padding: 8px;
@@ -505,7 +548,7 @@ html{
         padding: 8px 12px;
         background: none;
         border: none;
-        color: white;
+        color: var(--text-primary); /* Variável aplicada */
         cursor: pointer;
         border-radius: 4px;
         font-size: 12px;
@@ -563,7 +606,7 @@ html{
         gap: 8px;
         padding: 8px 10px;
         border-radius: 6px;
-        background: rgba(14, 59, 82, 0.4);
+        background: var(--bg-input);
         border: 1px solid rgba(83, 234, 253, 0.2);
         cursor: pointer;
         transition: all 0.3s ease;
@@ -583,7 +626,7 @@ html{
 
     .texto-subquest {
         font-size: 12px;
-        color: white;
+        color: var(--text-primary);
         flex: 1;
     }
 
@@ -656,9 +699,9 @@ html{
     .modo-subquests-group {
         margin-bottom: 15px;
         padding: 10px;
-        background: rgba(14, 59, 82, 0.2);
+        background:var(--bg-subquest);
         border-radius: 8px;
-        border: 1px solid rgba(83, 234, 253, 0.1);
+        border: var(--borde-subquest);
     }
 
     .modo-options {
@@ -695,7 +738,7 @@ html{
     .modo-option input[type="radio"]:checked + .modo-label {
         border-color: #53eafd;
         background: #0e3b52;
-        color: white;
+        color: var(--text-primary);
     }
 
     .modo-label strong {
@@ -728,7 +771,7 @@ html{
     .barra-progresso-semanal, .barra-progresso-principal {
         width: 100%;
         height: 6px;
-        background: #0b1226;
+        background: var(--bg-input);
         border-radius: 10px;
         margin: 8px 0;
         overflow: hidden;
@@ -762,8 +805,7 @@ html{
     border: 2px solid #53eafd;
     border-radius: 15px;
     padding: 20px;
-    background: #1B283B;
-    background: linear-gradient(180deg,rgba(27, 40, 59, 1) 10%, rgba(26, 37, 57, 1) 50%, rgba(21, 32, 52, 1) 90%);
+    background: var(--bg-modal); /* Variável aplicada */
     position: fixed;
     top: 50%;
     left: 50%;
@@ -827,8 +869,8 @@ html{
     padding: 12px;
     border: 1px solid #334155;
     border-radius: 8px;
-    background: #0b1226;
-    color: white;
+    background: var(--bg-input); /* Variável aplicada */
+        color: var(--text-primary); /* Variável aplicada */
     }
 
     .modal textarea {
@@ -851,7 +893,7 @@ html{
     border: 2px solid #334155;
     border-radius: 10px;
     text-align: center;
-    background: #1e293b;
+    background: var(--bg-container);
     color: #90a1b9;
     cursor: pointer;
     transition: all 0.3s;
@@ -859,8 +901,8 @@ html{
 
     input[type="radio"]:checked + .card-content {
     border-color: #53eafd;
-    background: #0e3b52;
-    color: white;
+    background: var(--bg-container);
+    color: var(--text-primary);
     }
 
     .tipo-card input[type="radio"] {
@@ -906,7 +948,7 @@ html{
         font-size: 11px;
         border: 2px solid #334155;
         border-radius: 6px;
-        background: #1e293b;
+        background: var(--bg-container);
         color: #90a1b9;
         cursor: pointer;
         transition: all 0.3s;
@@ -915,8 +957,8 @@ html{
     
     .dia-checkbox input[type="checkbox"]:checked+.dia-label {
         border-color: #53eafd;
-        background: #0e3b52;
-        color: white;
+        background: var(--bg-container);
+        color: var(--text-primary);
     }
 
     .subquests-list {
@@ -979,12 +1021,13 @@ html{
     .modal button[type="submit"] {
     padding: 15px;
     background: #3b82f6;
-    color: white;
+    color: var(--text-primary);
     border: none;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 1rem;
+    box-shadow: var(--shadow-card);
     }
 
     .modal::backdrop {

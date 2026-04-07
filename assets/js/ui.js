@@ -1,7 +1,22 @@
 
-const temaClaro = [
-    bodyBackground: ""
-]
+function temaDarkLight(){
+    const htmlRoot = document.documentElement;
+
+    const temaOnOff = document.getElementById("botao-tema");
+
+    if(temaOnOff){
+        temaOnOff.addEventListener("click", function(){
+        if(htmlRoot.classList.contains("darktema")){
+            htmlRoot.classList.replace("darktema", "lighttema");
+        }
+        else{
+            htmlRoot.classList.replace("lighttema", "darktema");
+        }
+
+        });
+    }
+
+}
 
 // ========================================
 // ATUALIZAR INTERFACE DO JOGADOR
@@ -133,6 +148,7 @@ function inicializarUI() {
     // Atualiza interface pela primeira vez
     atualizarInterfaceJogador();
     atualizarContadoresMissoes();
+    temaDarkLight();
 }
 
 // Inicializa quando a página carregar

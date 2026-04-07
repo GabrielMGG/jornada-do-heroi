@@ -1,9 +1,8 @@
-:root .lighttema{
-    --bg-tema: white;
+:root.lighttema {
+    --bg-body: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #EEF2FF 100%);    --text-primary: #1e293b;
 }
-
-:root .darktema{
-    --bg-tema: linear-gradient(to bottom,#020617,#0d162a,#111827);
+:root.darktema {
+    --bg-body: linear-gradient(180deg, #020617 0%, #0F172A 50%, #1E1B4B 100%);    --text-primary: #ffffff;
 }
 
 
@@ -31,7 +30,9 @@ html, body {
 }
 
 body {
-    background: var(--background-tema-escuro);
+    background: var(--bg-body);
+    color: var(--text-primary);
+    transition: background-color 0.3s, color 0.3s;
     
 
     background-attachment: fixed;
@@ -40,4 +41,7 @@ body {
     overflow-x: hidden;
     width: 100%;
     position: relative;
+
+
 }
+
