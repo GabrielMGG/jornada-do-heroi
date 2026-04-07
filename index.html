@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="darktema">
 <head>
+    <!--vai carregar o tema escolhido primeiro que tudo -->
+    <script>
+        (function() {
+            const temaSalvo = localStorage.getItem("tema-salvo");
+            if (temaSalvo) {
+                // Remove qualquer classe de tema e aplica a salva IMEDIATAMENTE
+                document.documentElement.classList.remove("darktema", "lighttema");
+                document.documentElement.classList.add(temaSalvo);
+            }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cultivo do Heroi</title>

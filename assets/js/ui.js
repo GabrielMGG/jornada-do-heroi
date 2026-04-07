@@ -1,18 +1,19 @@
-
 function temaDarkLight(){
     const htmlRoot = document.documentElement;
 
     const temaOnOff = document.getElementById("botao-tema");
+    
 
     if(temaOnOff){
         temaOnOff.addEventListener("click", function(){
+
         if(htmlRoot.classList.contains("darktema")){
             htmlRoot.classList.replace("darktema", "lighttema");
         }
         else{
             htmlRoot.classList.replace("lighttema", "darktema");
         }
-
+        localStorage.setItem("tema-salvo", htmlRoot.className)
         });
     }
 
