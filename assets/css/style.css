@@ -1,3 +1,29 @@
+/* Variáveis para o TEMA ESCURO (padrão atual) */
+:root .darktema {
+    --bg-body: #0b1226;
+    --bg-container: #17223a;
+    --bg-card: rgba(27, 39, 59, 0.8);
+    --bg-card-gradient: linear-gradient(180deg, rgba(27, 39, 59, 0.8) 10%, rgba(27, 39, 59, 0.5) 50%, rgba(27, 39, 59, 0.2) 90%);
+    --bg-modal: linear-gradient(180deg, rgba(27, 40, 59, 1) 10%, rgba(26, 37, 57, 1) 50%, rgba(21, 32, 52, 1) 90%);
+    --bg-input: #0b1226;
+    --bg-menu: linear-gradient(145deg, #101828, #18263d);
+    --shadow-card: 1px 10px 25px -1px rgba(0, 0, 0, 0.5);
+    --text-primary: #ffffff;
+}
+
+/* Variáveis para o TEMA CLARO */
+:root .lighttema {
+    --bg-body: #f0f4f8; /* Azul acinzentado bem clarinho */
+    --bg-container: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 10%, rgba(240, 244, 248, 0.7) 90%);
+    --bg-modal: #ffffff;
+    --bg-input: #f8fafc;
+    --bg-menu: linear-gradient(145deg, #ffffff, #e2e8f0);
+    --shadow-card: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --text-primary: #1e293b; /* Cor de texto escura para leitura */
+}
+
 html{
     font-size: 65.5%; /*10px = 1 rem*/
 }

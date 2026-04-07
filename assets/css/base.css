@@ -1,3 +1,12 @@
+:root .lighttema{
+    --bg-tema: white;
+}
+
+:root .darktema{
+    --bg-tema: linear-gradient(to bottom,#020617,#0d162a,#111827);
+}
+
+
 /* RESET E CONFIGURAÇÕES GLOBAIS */
 * {
     margin: 0;
@@ -22,7 +31,7 @@ html, body {
 }
 
 body {
-    background: linear-gradient(to bottom,#020617,#0d162a,#111827);
+    background: var(--background-tema-escuro);
     
 
     background-attachment: fixed;

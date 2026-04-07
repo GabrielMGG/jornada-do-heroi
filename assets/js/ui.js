@@ -1,3 +1,8 @@
+
+const temaClaro = [
+    bodyBackground: ""
+]
+
 // ========================================
 // ATUALIZAR INTERFACE DO JOGADOR
 // ========================================
@@ -92,7 +97,7 @@ function mostrarAnimacaoLevelUp(nivelNovo, spGanho) {
     ╚════════════════════════════════════╝
     `);
     
-    // Você pode adicionar aqui:
+    // ideias pra adicionar aqui:
     // - Som de level up
     // - Partículas/confetes
     // - Modal mostrando os SP ganhos
