@@ -1,3 +1,7 @@
+function salvarJogadorLS(){
+    localStorage.setItem("jogador", JSON.stringify(jogador));
+}
+
 // ========================================
 // OBJETO PRINCIPAL DO JOGADOR
 // ========================================
@@ -12,15 +16,100 @@ const jogador = {
     multiplicadorXP: 1.5,
     xpBase: 100, // XP necessário para subir do level 1 para 2
     
-    // Atributos (vamos usar depois)
+    // Atributos 
     atributos: {
-        forca: 0,
-        inteligencia: 0,
-        vitalidade: 0,
-        agilidade: 0,
-        sorte: 0
+        forca: 10,
+        inteligencia: 10,
+        vitalidade: 10,
+        agilidade: 10,
+        sabedoria: 10,
+        carisma: 10
     }
 };
+
+
+function carregarStatusJogador(){
+    const statusSalvos = localStorage.getItem("jogador");
+
+    if(statusSalvos){
+        const dados = JSON.parse(statusSalvos);
+
+        Object.assign(jogador, dados);
+    }
+
+    const atrForca = document.querySelector(".number-forca").textContent = jogador.atributos.forca;
+    const atrInteligencia = document.querySelector(".number-inteligencia").textContent = jogador.atributos.inteligencia;
+    const atrVitalidade = document.querySelector(".number-vitalidade").textContent = jogador.atributos.vitalidade;
+    const atrAgilidade = document.querySelector(".number-agilidade").textContent = jogador.atributos.agilidade;
+    const atrSabedoria = document.querySelector(".number-sabedoria").textContent = jogador.atributos.sabedoria;
+    const atrCarisma = document.querySelector(".number-carisma").textContent = jogador.atributos.carisma;   
+
+    //PEGAR E COLOCAR O SP DO JOGADOR DISPONIVEL//
+    const spAtual = document.getElementById("disponivel-sp").textContent = jogador.sp;
+
+}
+
+
+function distribuirSp(){
+    const btnAtributos = document.querySelectorAll("[data-stat]");
+    btnAtributos.forEach(function(botao){
+
+        botao.addEventListener('click', function(){
+            const opcaoStat = botao.dataset.stat;
+
+        
+
+    if(jogador.sp > 0){    
+        switch(opcaoStat){
+            case "forca":
+                    jogador.atributos.forca += 1;
+                    jogador.sp -= 1;
+
+            break;
+
+            case "inteligencia":
+                    jogador.atributos.inteligencia += 1;
+                    jogador.sp -= 1;
+
+            break;
+
+            case "agilidade":
+                    jogador.atributos.agilidade += 1;
+                    jogador.sp -= 1;
+
+            break;
+
+            case "vitalidade":
+                    jogador.atributos.vitalidade += 1;
+                    jogador.sp -= 1;
+                
+            break;
+
+            case "sabedoria":
+
+                    jogador.atributos.sabedoria += 1;
+                    jogador.sp -= 1;
+            break;
+
+            case "carisma":
+                    jogador.atributos.carisma += 1;
+                    jogador.sp -= 1;
+            break;
+
+        }
+
+    }
+    else if (jogador.sp <= 0){
+        mostrarMensagemErro("Você não possui pontos de atributo!", 3000);
+    }
+
+        
+        salvarJogadorLS();
+        carregarStatusJogador();
+        });
+        
+    });
+}
 
 // ========================================
 // FUNÇÃO: CALCULAR XP NECESSÁRIO
@@ -49,6 +138,8 @@ function ganharXP(quantidade) {
         subirDeNivel();
         subiu = true;
     }
+
+    salvarJogadorLS();
     
     // Atualiza a interface visual
     if (typeof atualizarInterfaceJogador === 'function') {
@@ -146,6 +237,8 @@ function obterStatusJogador() {
     };
 }
 
+carregarStatusJogador();
+distribuirSp();
 // ========================================
 // LOG INICIAL (para debug)
 // ========================================

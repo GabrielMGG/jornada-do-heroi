@@ -387,7 +387,7 @@ function completarMissao(idMissao){
                     barraProgresso.style.width = `${porcentagem}%`;
                     contadorDias.textContent = `${missao.progressoSemanal.diasConcluidos}/${missao.progressoSemanal.totalDias} dias`;
                     
-                    // 🔴 ATUALIZAR VISUAL DOS DIAS
+                    //  ATUALIZAR VISUAL DOS DIAS
                     diasMarcados.forEach(diaElement => {
                         const textoDia = diaElement.textContent;
                         const diaAbreviado = Object.keys(diasMap).find(key => diasMap[key] === textoDia);
@@ -441,6 +441,8 @@ function completarMissao(idMissao){
         console.log(xpMissao)
 
 
+        salvarMissoesLS();
+        salvarJogadorLS();
 
         console.log('Missao foi concluida:', missao.titulo);
 
@@ -485,6 +487,7 @@ function completarSubQuest(idMissao, tituloSubQuest) {
             const listaSubquests = missaoElement.querySelector('.lista-subquests');
             
             salvarMissoesLS();
+            salvarJogadorLS();
             listaSubquests.innerHTML = '';
             missao.subQuests.forEach((sq, index) => {
                 const subquestElement = document.createElement('div');
@@ -570,6 +573,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     atualizarVisibilidade();
     salvarMissoesLS();
+    salvarJogadorLS();
 });
 
 const botaoAddSubquest = document.querySelector('.add-subquest');

@@ -1,12 +1,21 @@
 const ctx1 = document.getElementById("meuRadar");
 
+//VAI PEGAR OS ATRIBUTOS DO JOGADOR//
+
+const graficoForca = jogador.atributos.forca
+const graficoInt = jogador.atributos.inteligencia
+const graficoAgi = jogador.atributos.agilidade
+const graficoVit = jogador.atributos.vitalidade
+const graficoSab = jogador.atributos.sabedoria
+const graficoCar = jogador.atributos.carisma
+
 new Chart(ctx1, {
   type: "radar",
   data: {
     labels: ["FOR", "INT", "AGI", "VIT", "SAB", "CAR"],
     datasets: [{
       label: "Atributos",
-      data: [66, 65, 71, 64, 66, 74],
+      data: [graficoForca, graficoInt, graficoAgi, graficoVit, graficoSab, graficoCar],
       borderColor: "rgba(0, 255, 255, 0.9)", /* CIANO */
       backgroundColor: "rgba(0, 255, 255, 0.25)", 
       borderWidth: 2,

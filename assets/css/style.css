@@ -29,6 +29,11 @@
     /* Efeitos */
     --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
     --border-default: 1px solid #E2E8F0;
+
+    /*mensagem erro*/
+    --bg-alerta-erro: #FEE2E2;
+    --border-alerta-erro: #EF4444;
+    --text-alerta-erro: #991B1B;
 }
 
 
@@ -66,6 +71,12 @@
     /* Efeitos de Glow e Bordas */
     --border-default: 1px solid rgba(6, 182, 212, 0.2); /* cyan-500/20 */
     --shadow-card: 0 10px 25px -1px rgba(0, 0, 0, 0.5), 0 0 10px rgba(6, 182, 212, 0.1);
+
+    /*mensagem erro*/
+    --bg-alerta-erro: rgba(2, 6, 23, 0.95); /* Slate-950 com transparência */
+    --border-alerta-erro: var(--color-legendary); /* Laranja Lendário para aviso */
+    --text-alerta-erro: var(--text-primary); /* Texto esbranquiçado */
+    --shadow-alerta: 0 0 20px rgba(251, 191, 36, 0.2);
 }
 
 
@@ -270,7 +281,11 @@ html{
         height: 3rem;
         border: 1px solid #16415b;
         border-radius: 20px;
-        background-color: var(--bg-input); /* Variável aplicada */
+        background-color: var(--bg-input);
+        
+        
+        position: relative; 
+        overflow: hidden;   
     }
 
     .lvl{
