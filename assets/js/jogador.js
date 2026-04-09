@@ -37,12 +37,12 @@ function carregarStatusJogador(){
         Object.assign(jogador, dados);
     }
 
-    const atrForca = document.querySelector(".number-forca").textContent = jogador.atributos.forca;
-    const atrInteligencia = document.querySelector(".number-inteligencia").textContent = jogador.atributos.inteligencia;
-    const atrVitalidade = document.querySelector(".number-vitalidade").textContent = jogador.atributos.vitalidade;
-    const atrAgilidade = document.querySelector(".number-agilidade").textContent = jogador.atributos.agilidade;
-    const atrSabedoria = document.querySelector(".number-sabedoria").textContent = jogador.atributos.sabedoria;
-    const atrCarisma = document.querySelector(".number-carisma").textContent = jogador.atributos.carisma;   
+    const atrForca = document.querySelector(".number-forca").textContent = `${jogador.atributos.forca} pts`;
+    const atrInteligencia = document.querySelector(".number-inteligencia").textContent = `${jogador.atributos.inteligencia} pts`;
+    const atrVitalidade = document.querySelector(".number-vitalidade").textContent = `${jogador.atributos.vitalidade} pts`;
+    const atrAgilidade = document.querySelector(".number-agilidade").textContent = `${jogador.atributos.agilidade} pts`;
+    const atrSabedoria = document.querySelector(".number-sabedoria").textContent = `${jogador.atributos.sabedoria} pts`;
+    const atrCarisma = document.querySelector(".number-carisma").textContent = `${jogador.atributos.carisma} pts`;  
 
     //PEGAR E COLOCAR O SP DO JOGADOR DISPONIVEL//
     const spAtual = document.getElementById("disponivel-sp").textContent = jogador.sp;

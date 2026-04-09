@@ -9,6 +9,7 @@ const graficoVit = jogador.atributos.vitalidade
 const graficoSab = jogador.atributos.sabedoria
 const graficoCar = jogador.atributos.carisma
 
+function grafico(){
 new Chart(ctx1, {
   type: "radar",
   data: {
@@ -39,3 +40,5 @@ new Chart(ctx1, {
     plugins: { legend: { display: false } }
   }
 });
+
+}

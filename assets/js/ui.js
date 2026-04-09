@@ -50,6 +50,76 @@ function mostrarMensagemErro(mensagem, duracao = 3000) {
 }
 
 // ========================================
+// SISTEMA DE PARTÍCULAS DE XP (EFEITO VISUAL)
+// ========================================
+
+/**
+ * Efeito de desintegração: Partículas saem de toda a área do card.
+ */
+function desintegrarCardParaXP(cardElement, cor, quantidadeXP) {
+    const QUANTIDADE = 40; // Mais partículas para parecer que o card "quebrou"
+    const DURACAO = 1200;
+    const rect = cardElement.getBoundingClientRect();
+    
+    // 1. Mostrar a mensagem de XP (Substitui o alert nativo)
+    mostrarXPPopup(rect.left + rect.width / 2, rect.top, quantidadeXP, cor);
+
+    // 2. Localizar a barra de XP para o destino final
+    const alvoXP = document.querySelector('.bar-xp');
+    if (!alvoXP) return;
+    const rectAlvo = alvoXP.getBoundingClientRect();
+    const centroAlvoX = rectAlvo.left + (rectAlvo.width / 2);
+    const centroAlvoY = rectAlvo.top + (rectAlvo.height / 2);
+
+    // 3. Criar partículas saindo de pontos aleatórios DO CARD
+    for (let i = 0; i < QUANTIDADE; i++) {
+        const particula = document.createElement('div');
+        particula.className = 'xp-particle';
+        
+        // Posição inicial aleatória dentro dos limites do card
+        const startX = rect.left + Math.random() * rect.width;
+        const startY = rect.top + Math.random() * rect.height;
+
+        Object.assign(particula.style, {
+            backgroundColor: cor,
+            boxShadow: `0 0 6px ${cor}`,
+            left: `${startX}px`,
+            top: `${startY}px`
+        });
+
+        document.body.appendChild(particula);
+
+        // Animação de viagem até a barra
+        particula.animate([
+            { transform: 'scale(1)', opacity: 1 },
+            { transform: `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px) scale(1.5)`, opacity: 1, offset: 0.15 },
+            { left: `${centroAlvoX}px`, top: `${centroAlvoY}px`, transform: 'scale(0.2)', opacity: 0 }
+        ], {
+            duration: DURACAO,
+            easing: 'ease-in',
+            fill: 'forwards'
+        });
+
+        setTimeout(() => particula.remove(), DURACAO);
+    }
+}
+
+/**
+ * Mostra o valor de XP ganho flutuando na tela.
+ */
+function mostrarXPPopup(x, y, valor, cor) {
+    const popup = document.createElement('div');
+    popup.className = 'xp-popup';
+    popup.textContent = `+${valor} XP`;
+    popup.style.color = cor;
+    popup.style.left = `${x}px`;
+    popup.style.top = `${y}px`;
+    popup.style.textShadow = `0 0 10px ${cor}`;
+    
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 1200);
+}
+// ========================================
 // ATUALIZAR INTERFACE DO JOGADOR
 // ========================================
 function atualizarInterfaceJogador() {
@@ -196,6 +266,7 @@ function inicializarUI() {
     atualizarInterfaceJogador();
     atualizarContadoresMissoes();
     temaDarkLight();
+    grafico();
 }
 
 // Inicializa quando a página carregar

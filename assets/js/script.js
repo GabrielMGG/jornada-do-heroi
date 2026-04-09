@@ -283,52 +283,43 @@ function carregarMissoes(){
 
 // EVENT LISTENER COMPLETAMENTE CORRIGIDO
 document.addEventListener('click', function(event){
-    // Concluir missão
+    // Concluir missão com desintegração
     if(event.target.classList.contains('quest-concluida')){
-        const missaoElement = event.target.closest('.conteiner-quest')
-        const idMissao = missaoElement.getAttribute('data-id');
-        completarMissao(parseInt(idMissao))
-    }
-    
-    // Completar sub quest
-    if (event.target.classList.contains('texto-subquest')) {
-        const subquestElement = event.target.closest('.subquest-item-display');
-        const missaoElement = subquestElement.closest('.conteiner-quest');
-        const idMissao = missaoElement.getAttribute('data-id');
-        completarSubQuest(parseInt(idMissao), event.target.textContent);
-    }
+        const btn = event.target;
+        const missaoElement = btn.closest('.conteiner-quest');
+        const idMissao = parseInt(missaoElement.getAttribute('data-id'));
+        const missao = missoes.find(m => m.id === idMissao);
+        
+        if (missao && !missao.concluida) {
+            // Verificar impedimento de subquests (se houver)
+            if (missao.tipo === 'Principal' && missao.subQuests?.length > 0) {
+                const completas = missao.subQuests.filter(sq => sq.concluida).length;
+                if (completas < missao.subQuests.length) {
+                    // Usando sua função de erro do ui.js em vez de alert nativo
+                    if (typeof mostrarMensagemErro === 'function') {
+                        mostrarMensagemErro("Complete as sub-missões primeiro!", 3000);
+                    }
+                    return;
+                }
+            }
 
-    // 🔴 DETECTAR CLIQUE NO BOTÃO OPTIONS
-    const btnOptions = event.target.closest('.btn-options');
-    if (btnOptions) {
-        event.stopPropagation();
-        const missaoElement = btnOptions.closest('.conteiner-quest');
-        const idMissao = missaoElement.getAttribute('data-id');
-        toggleMenu(event, parseInt(idMissao));
-        return;
-    }
-    
-    // 🔴 DETECTAR CLIQUE NOS ITENS DO MENU
-    if (event.target.classList.contains('btn-editar')) {
-        event.stopPropagation();
-        const missaoElement = event.target.closest('.conteiner-quest');
-        const idMissao = missaoElement.getAttribute('data-id');
-        editarMissao(parseInt(idMissao));
-        return;
-    }
-    
-    if (event.target.classList.contains('btn-deletar')) {
-        event.stopPropagation();
-        const missaoElement = event.target.closest('.conteiner-quest');
-        const idMissao = missaoElement.getAttribute('data-id');
-        deletarMissao(parseInt(idMissao));
-        return;
-    }
-    
-    // Fechar menu ao clicar fora
-    if (menuAberto && !menuAberto.contains(event.target)) {
-        menuAberto.style.display = 'none';
-        menuAberto = null;
+            const config = SISTEMA_RARIDADE[missao.raridade || 'comum'];
+            
+            // Inicia o efeito visual usando o CARD INTEIRO
+            if (typeof desintegrarCardParaXP === 'function') {
+                desintegrarCardParaXP(missaoElement, config.cor, config.xp);
+            }
+
+            // Efeito de fade out no card para parecer que ele "sumiu" nas partículas
+            missaoElement.style.transition = 'all 0.5s ease';
+            missaoElement.style.transform = 'scale(0.9)';
+            missaoElement.style.opacity = '0';
+
+            // Aguarda o tempo das partículas chegarem na barra
+            setTimeout(() => {
+                completarMissao(idMissao);
+            }, 1000);
+        }
     }
 });
 
